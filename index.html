@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="style/main.css" />
 </head>
 <body>
-    <div data-role="page" id="main-page">
+    <div data-role="page" id="main-page" class="hide">
         <div data-role="header">    
         	<h1>Lista de deseos</h1>
 		</div>
@@ -21,7 +21,7 @@
 		    <input type="submit" data-inline="true" value="Submit" onclick="checkCredentials()">
 		</div>
 	</div> 
-    <div data-role="page" id="list-page">
+    <div data-role="page" id="list-page" class="hide">
         <div data-role="header">    
         	<h1>Lista de deseos</h1>
 	        <div data-role="navbar">
@@ -40,7 +40,7 @@
         </div>
  
     </div>
-    <div data-role="page" id="new-page">
+    <div data-role="page" id="new-page" class="hide">
         <div data-role="header"> 
         	<div style="float:left;"><img src="images/cochezlogo.png" /></div>   
         	<h1>Lista de deseos</h1>
@@ -83,7 +83,7 @@
     }
     
     function errorDB(err) {
-        alert("Error processing SQL: "+err.code);
+        alert("Error processing SQL: "+err.message);
     }
     
     function initCheckCredentials(tx){
@@ -101,7 +101,7 @@
     		/*TODO: Traer lista del usuario logueado*/
     	}
     	else {
-    		//changePage('main-page');
+    		changePage('main-page');
     	}
     }
     
@@ -118,17 +118,20 @@
     	var usr = $('#user').val();
     	var pwd = $('#pwd').val();
         tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
-        tx.executeSql('INSERT INTO CREDENTIALS (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');
-    	
+        tx.executeSql('INSERT INTO CREDENTIALS (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');    	
     }
     
     function changePage(showPage){
     	$('div[data-role="page"]').each(function(){
     		alert();
-    		if($(this).attr('id') == showPage)
+    		if($(this).attr('id') == showPage){
     			$(this).removeClass('hide');
-    		else
+    			$(this).addClass('ui-page ui-body-c ui-page-active');
+    		}
+    		else{
     			$(this).addClass('hide');
+    			$(this).removeClass('ui-page ui-body-c ui-page-active');
+    		}
     	});
     }
     </script>
