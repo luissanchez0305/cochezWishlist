@@ -7,21 +7,21 @@
 	<link rel="stylesheet" href="style/main.css" />
 </head>
 <body>
-    <div data-role="page" id="main-page" class="hide">
+    <div data-role="page" id="main-page">
         <div data-role="header">    
         	<h1>Lista de deseos</h1>
 		</div>
         <div data-role="main" class="ui-content">
 		    <div class="ui-field-contain">
-		      <label for="fullname">Email:</label>
+		      <label for="usr">Email:</label>
 		      <input type="text" name="usr" id="usr">       
-		      <label for="bday">Password:</label>
+		      <label for="pwd">Password:</label>
 		      <input type="password" name="pwd" id="pwd">
 		    </div>
 		    <input type="submit" data-inline="true" value="Submit" onclick="checkCredentials()">
 		</div>
 	</div> 
-    <div data-role="page" id="list-page" class="hide">
+    <div data-role="page" id="list-page">
         <div data-role="header">    
         	<h1>Lista de deseos</h1>
 	        <div data-role="navbar">
@@ -40,7 +40,7 @@
         </div>
  
     </div>
-    <div data-role="page" id="new-page" class="hide">
+    <div data-role="page" id="new-page">
         <div data-role="header"> 
         	<div style="float:left;"><img src="images/cochezlogo.png" /></div>   
         	<h1>Lista de deseos</h1>
@@ -78,6 +78,7 @@
     // PhoneGap is ready
     //
     function onDeviceReady() {
+    	alert();
         db.transaction(initCheckCredentials, errorDB);
     }
     
@@ -96,11 +97,11 @@
     	var pwd = $('#pwd').val();
     	
     	if(results.rows.length > 0) {
-    		$.mobile.changePage($('#list-page'), {});
+    		changePage('list-page');
     		/*TODO: Traer lista del usuario logueado*/
     	}
     	else {
-    		changePage('main-page');
+    		//changePage('main-page');
     	}
     }
     
@@ -109,7 +110,7 @@
     }
     
     function successDB(){
-		changePage('list-page');    	
+		changePage('list-page');
     }
     
     function checkCredentialsDB(tx){
@@ -123,6 +124,7 @@
     
     function changePage(showPage){
     	$('div[data-role="page"]').each(function(){
+    		alert();
     		if($(this).attr('id') == showPage)
     			$(this).removeClass('hide');
     		else
