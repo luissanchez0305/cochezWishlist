@@ -105,8 +105,11 @@
     }
     
     function checkCredentials(){
-        db.transaction(checkCredentialsDB, errorDB);
-    	
+        db.transaction(checkCredentialsDB, errorDB, successDB);    	
+    }
+    
+    function successDB(){
+		changePage('list-page');    	
     }
     
     function checkCredentialsDB(tx){
@@ -116,7 +119,6 @@
         tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
         tx.executeSql('INSERT INTO CREDENTIALS (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');
     	
-		changePage('list-page');
     }
     
     function changePage(showPage){
