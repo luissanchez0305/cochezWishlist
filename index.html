@@ -73,13 +73,15 @@
     // Wait for PhoneGap to load
     //
     var db = window.openDatabase("cochezwl", "1.0", "Cochez WL", 1000000);
+    $(document).read(function(){
+        db.transaction(initCheckCredentials, errorDB);    	
+    });
     document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is ready
     //
     function onDeviceReady() {
     	alert();
-        db.transaction(initCheckCredentials, errorDB);
     }
     
     function errorDB(err) {
