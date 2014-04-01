@@ -89,9 +89,9 @@
     }
     
     function initCheckCredentials(tx){
-    	alert(tx);
         tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
 
+    	alert(tx);
         tx.executeSql('SELECT * FROM CREDENTIALS', [], querySuccess, errorCB);    	
     }
     
