@@ -70,13 +70,13 @@
 	
     <script type="text/javascript" charset="utf-8">
     
-    document.addEventListener("deviceready", onDeviceReady, true); 
+    document.addEventListener("deviceready", function(){
+        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
+        alert(db); }, true); 
     
     // PhoneGap is ready
     //
     function onDeviceReady() {
-        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
-        alert(db);
     }
 
     // PhoneGap is ready
