@@ -71,6 +71,7 @@ function loadRepoDetail(owner,name) {
 }
 
 $('#reposHome').bind('pageinit', function(event) {
+	console.log('pageinit');
 	loadRepos();
 });
 
