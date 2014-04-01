@@ -89,9 +89,9 @@
     }
     
     function initCheckCredentials(tx){
-        tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS Users (id unique, user, pwd)');
 
-        tx.executeSql('SELECT * FROM CREDENTIALS', [], querySuccess, errorCB);  
+        tx.executeSql('SELECT * FROM Users', [], querySuccess, errorCB);  
     	alert(tx);  	
     }
     
@@ -121,8 +121,8 @@
     	/*TODO: Revisar credenciales desde webservice*/
     	var usr = $('#user').val();
     	var pwd = $('#pwd').val();
-        tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
-        tx.executeSql('INSERT INTO CREDENTIALS (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');    	
+        tx.executeSql('CREATE TABLE IF NOT EXISTS Users (id unique, user, pwd)');
+        tx.executeSql('INSERT INTO Users (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');    	
     }
     
     function changePage(showPage){
