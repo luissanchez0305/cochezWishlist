@@ -17,12 +17,12 @@
     
     // Wait for Cordova to load
     //
-    document.addEventListener("deviceready", onDeviceReady, true);
+    //document.addEventListener("deviceready", onDeviceReady, false);
 
 
     </script>
   </head>
-  <body>
+  <body onload="onDeviceReady()">
     <h1>Example</h1>
     <p>Open Database</p>
   </body>
