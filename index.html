@@ -11,12 +11,13 @@
     // Cordova is ready
     //
     function onDeviceReady() {
+        var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
         alert('ready');
     }
     
     // Wait for Cordova to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("deviceready", onDeviceReady, true);
 
 
     </script>
