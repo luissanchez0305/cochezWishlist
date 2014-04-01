@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />	
 	<link rel="stylesheet" href="style/main.css" />
+	<script>    
+    document.addEventListener("deviceready", onDeviceReady, false); 
+    
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
+        alert(db);
+    }	
+	</script>
 </head>
 <body>
     <div data-role="page" id="main-page" class="hide">
@@ -70,18 +80,18 @@
 	
     <script type="text/javascript" charset="utf-8">
     
-    document.addEventListener("deviceready", function(){
-        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
-        alert(db); }, true); 
+    /*document.addEventListener("deviceready", onDeviceReady, false); 
     
     // PhoneGap is ready
     //
     function onDeviceReady() {
+        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
+        alert(db);
     }
 
     // PhoneGap is ready
     //
-    /*function onDeviceReady() {
+    function onDeviceReady() {
     	alert();
     }
     
