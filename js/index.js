@@ -99,8 +99,8 @@ var db;
 $('#reposHome').bind('pageinit', function(event) {
 	console.log('pageinit');
     loadRepos();
-    db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
-    db.transaction(createDb, txError, txSuccess);
+    //db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
+    //db.transaction(createDb, txError, txSuccess);
 });
 
 function createDb(tx) {
