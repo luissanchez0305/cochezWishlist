@@ -97,9 +97,9 @@ function getUrlVars() {
 var db;
 
 $('#reposHome').bind('pageinit', function(event) {
-	alert('pageinit');
     loadRepos();
     db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
+	alert('pageinit');
     //db.transaction(createDb, txError, txSuccess);
 });
 
@@ -109,8 +109,10 @@ function createDb(tx) {
 }
 
 function txError(error) {
-    console.log(error);
-    console.log("Database error: " + error);
+	alert(error);
+	alert("Database error: " + error);
+    /*console.log(error);
+    console.log("Database error: " + error);*/
 }
 
 function txSuccess() {
