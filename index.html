@@ -8,6 +8,9 @@
     <script type="text/javascript" charset="utf-8" src="lib/cordova-2.5.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
+    $(document).ready(function(){
+        document.addEventListener("deviceready", onDeviceReady, false);     	
+    });
     // Cordova is ready
     //
     function onDeviceReady() {
@@ -23,7 +26,7 @@
 
     </script>
   </head>
-  <body onload="onDeviceReady()">
+  <body>
     <h1>Example</h1>
     <p id="deviceProperties">Loading...</p>
   </body>
