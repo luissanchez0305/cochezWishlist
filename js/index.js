@@ -97,7 +97,7 @@ function getUrlVars() {
 var db;
 
 $('#reposHome').bind('pageinit', function(event) {
-	console.log('pageinit');
+	alert('pageinit');
     loadRepos();
     db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
     //db.transaction(createDb, txError, txSuccess);
