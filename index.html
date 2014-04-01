@@ -74,7 +74,7 @@
     //
     var db = window.openDatabase("cochezwl", "1.0", "Cochez WL", 1000000);
     $(document).ready(function(){
-        //db.transaction(initCheckCredentials, errorDB);    	
+        db.transaction(initCheckCredentials, errorDB);    	
     });
     document.addEventListener("deviceready", onDeviceReady, false); 
 
@@ -89,6 +89,7 @@
     }
     
     function initCheckCredentials(tx){
+    	alert(tx);
         tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
 
         tx.executeSql('SELECT * FROM CREDENTIALS', [], querySuccess, errorCB);    	
