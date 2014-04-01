@@ -39,15 +39,7 @@
 		        </ul>
 		    </div>
 		</div>
-        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/phonegap-1.4.1.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-	        $.ajax("https://api.github.com/legacy/repos/search/javascript").done(function(data) {
-	            var i, repo;
-	            $.each(data.repositories, function (i, repo) {
-	               $("#allRepos").append("<p><a href='https://github.com/" + repo.username + "/" + repo.name + "'>" + repo.name + "</a><br>"+ repo.description + "&g\lt;/p>");
-	            });
-	       	});
-        </script>
     </body>
 </html>
