@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SoftLayer Hello World!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />	
+	<link rel="stylesheet" href="style/main.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<script src="lib/cordova-2.5.0.js"></script>
+	<script>    
+    document.addEventListener("deviceready", onDeviceReady, false); 
+    
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
+        alert(db);
+    }	
+	</script>
+</head>
+<body>
+    <div data-role="page" id="main-page" class="hide">
+        <div data-role="header">    
+        	<h1>Lista de deseos</h1>
+		</div>
+        <div data-role="main" class="ui-content">
+		    <div class="ui-field-contain">
+		      <label for="usr">Email:</label>
+		      <input type="text" name="usr" id="usr">       
+		      <label for="pwd">Password:</label>
+		      <input type="password" name="pwd" id="pwd">
+		    </div>
+		    <input type="submit" data-inline="true" value="Submit" onclick="checkCredentials()">
+		</div>
+	</div> 
+    <div data-role="page" id="list-page" class="hide">
+        <div data-role="header">    
+        	<h1>Lista de deseos</h1>
+	        <div data-role="navbar">
+	            <ul>
+	                <li><a href="#" data-icon="star" data-theme="b" onclick="changePage('new-page')">+ Nueva</a></li>
+	            </ul>
+        	</div>        
+        </div>
+ 
+        <div data-role="content">  
+            <p>***INGRESAR LISTA AQUI***</p>
+        </div>
+ 
+        <div data-role="footer" class="hide">
+            <h1>Bottom Footer</h1>
+        </div>
+ 
+    </div>
+    <div data-role="page" id="new-page" class="hide">
+        <div data-role="header"> 
+        	<div style="float:left;"><img src="images/cochezlogo.png" /></div>   
+        	<h1>Lista de deseos</h1>
+	        <div data-role="navbar">
+	            <ul>
+	                <li><a href="#softlayer_cool_stuff" data-icon="grid" data-theme="b" onclick="changePage('list-page')">Mis listas</a></li>
+	            </ul>
+        	</div>        
+        </div>
+ 
+        <div data-role="content">
+            <p>***CONTROLES DE INSERCION DE PRODUCTO***</p>
+            <p>+++NOMBRE+++</p>
+            <p>+++CAMARA+++</p>
+            <p>+++TOMA IMAGEN+++</p>
+        </div>
+ 
+        <div data-role="footer" class="hide">
+            <h1>Bottom Footer</h1>
+        </div>
+ 
+    </div>    
+    
+	
+    <script type="text/javascript" charset="utf-8">
+    
+    /*document.addEventListener("deviceready", onDeviceReady, false); 
+    
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
+        alert(db);
+    }
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+    	alert();
+    }
+    
+    function errorDB(err) {
+        alert("Error processing SQL: "+err.message);
+    }
+    
+    function initCheckCredentials(tx){
+        tx.executeSql('CREATE TABLE IF NOT EXISTS Users (id unique, user, pwd)');
+
+        tx.executeSql('SELECT * FROM Users', [], querySuccess, errorCB);  
+    	alert(tx);  	
+    }
+    
+    function querySuccess(tx, results) {
+    	alert(tx);
+    	var usr = $('#user').val();
+    	var pwd = $('#pwd').val();
+    	
+    	if(results.rows.length > 0) {
+    		changePage('list-page');
+    		//TODO: Traer lista del usuario logueado
+    	}
+    	else {
+    		changePage('main-page');
+    	}
+    }
+    
+    function checkCredentials(){
+        db.transaction(checkCredentialsDB, errorDB, successDB);    	
+    }
+    
+    function successDB(){
+		changePage('list-page');
+    }
+    
+    function checkCredentialsDB(tx){
+    	//TODO: Revisar credenciales desde webservice
+    	var usr = $('#user').val();
+    	var pwd = $('#pwd').val();
+        tx.executeSql('CREATE TABLE IF NOT EXISTS Users (id unique, user, pwd)');
+        tx.executeSql('INSERT INTO Users (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');    	
+    }
+    
+    function changePage(showPage){
+    	$('div[data-role="page"]').each(function(){
+    		alert();
+    		if($(this).attr('id') == showPage){
+    			$(this).removeClass('hide');
+    			$(this).addClass('ui-page ui-body-c ui-page-active');
+    		}
+    		else{
+    			$(this).addClass('hide');
+    			$(this).removeClass('ui-page ui-body-c ui-page-active');
+    		}
+    	});
+    }*/
+    </script>
+</body>
+</html>
