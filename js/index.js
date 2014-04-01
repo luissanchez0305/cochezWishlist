@@ -70,11 +70,6 @@ function loadRepoDetail(owner,name) {
     });
 }
 
-$('#reposHome').bind('pageinit', function(event) {
-	console.log('pageinit');
-	loadRepos();
-});
-
 function loadRepos() {
     $.ajax("https://api.github.com/legacy/repos/search/javascript").done(function(data) {
         var i, repo;
@@ -102,6 +97,7 @@ function getUrlVars() {
 var db;
 
 $('#reposHome').bind('pageinit', function(event) {
+	console.log('pageinit');
     loadRepos();
     db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
     db.transaction(createDb, txError, txSuccess);
