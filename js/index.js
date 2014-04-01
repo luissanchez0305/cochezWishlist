@@ -98,7 +98,7 @@ var db;
 
 $('#reposHome').bind('pageinit', function(event) {
     loadRepos();
-    db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
+    db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*2);
 	alert('pageinit');
     //db.transaction(createDb, txError, txSuccess);
 });
@@ -109,8 +109,6 @@ function createDb(tx) {
 }
 
 function txError(error) {
-	alert(error);
-	alert("Database error: " + error);
     /*console.log(error);
     console.log("Database error: " + error);*/
 }
