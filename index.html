@@ -69,18 +69,19 @@
 	<script src="lib/cordova-2.5.0.js"></script>
 	
     <script type="text/javascript" charset="utf-8">
-
-    // Wait for PhoneGap to load
-    //
-    var db = window.openDatabase("cochezwl", "1.0", "Cochez WL", 1000000);
-    $(document).ready(function(){
-        db.transaction(initCheckCredentials, errorDB);    	
-    });
+    
     document.addEventListener("deviceready", onDeviceReady, false); 
-
+    
     // PhoneGap is ready
     //
     function onDeviceReady() {
+        var db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
+        alert(db);
+    }
+
+    // PhoneGap is ready
+    //
+    /*function onDeviceReady() {
     	alert();
     }
     
@@ -102,7 +103,7 @@
     	
     	if(results.rows.length > 0) {
     		changePage('list-page');
-    		/*TODO: Traer lista del usuario logueado*/
+    		//TODO: Traer lista del usuario logueado
     	}
     	else {
     		changePage('main-page');
@@ -118,7 +119,7 @@
     }
     
     function checkCredentialsDB(tx){
-    	/*TODO: Revisar credenciales desde webservice*/
+    	//TODO: Revisar credenciales desde webservice
     	var usr = $('#user').val();
     	var pwd = $('#pwd').val();
         tx.executeSql('CREATE TABLE IF NOT EXISTS Users (id unique, user, pwd)');
@@ -137,7 +138,7 @@
     			$(this).removeClass('ui-page ui-body-c ui-page-active');
     		}
     	});
-    }
+    }*/
     </script>
 </body>
 </html>
