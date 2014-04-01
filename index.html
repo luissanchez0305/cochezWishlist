@@ -91,11 +91,12 @@
     function initCheckCredentials(tx){
         tx.executeSql('CREATE TABLE IF NOT EXISTS CREDENTIALS (id unique, user, pwd)');
 
-        //tx.executeSql('SELECT * FROM CREDENTIALS', [], querySuccess, errorCB);  
+        tx.executeSql('SELECT * FROM CREDENTIALS', [], querySuccess, errorCB);  
     	alert(tx);  	
     }
     
     function querySuccess(tx, results) {
+    	alert(tx);
     	var usr = $('#user').val();
     	var pwd = $('#pwd').val();
     	
