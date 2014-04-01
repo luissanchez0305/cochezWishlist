@@ -11,19 +11,20 @@
     // Cordova is ready
     //
     function onDeviceReady() {
-        var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
-        alert('ready');
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+                            'Device Cordova: '  + device.cordova  + '<br />' + 
+                            'Device Platform: ' + device.platform + '<br />' + 
+                            'Device UUID: '     + device.uuid     + '<br />' + 
+                            'Device Version: '  + device.version  + '<br />';
     }
-    
-    // Wait for Cordova to load
-    //
-    //document.addEventListener("deviceready", onDeviceReady, false);
 
 
     </script>
   </head>
   <body onload="onDeviceReady()">
     <h1>Example</h1>
-    <p>Open Database</p>
+    <p id="deviceProperties">Loading...</p>
   </body>
 </html>
