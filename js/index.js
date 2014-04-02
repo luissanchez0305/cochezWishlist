@@ -54,13 +54,13 @@ $('#reposDetail').live('pageshow', function(event) {
     loadRepoDetail(owner,name);
     $("#saveBtn").bind("click", saveFave);
     checkFave();
-	alert('');
 });
 
 function loadRepoDetail(owner,name) {
     $.ajax("https://api.github.com/repos/" + owner + "/" + name).done(function(data) {
         var repo = data;
         console.log(data);
+        console.log('device: ' + device.name);
 
         $('#repoName').html("<a href='" + repo.homepage + "'>" + repo.name + "</a>");
         $('#description').text(repo.description);
