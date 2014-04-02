@@ -99,7 +99,7 @@ var db;
 $('#reposHome').bind('pageinit', function(event) {
     loadRepos();
     //db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*5);
-	alert(device.name);
+	//alert(device.name);
     //db.transaction(createDb, txError, txSuccess);
 });
 
