@@ -54,7 +54,7 @@ $('#reposDetail').live('pageshow', function(event) {
     loadRepoDetail(owner,name);
     $("#saveBtn").bind("click", saveFave);
     checkFave();
-	alert(device.name);
+	alert('');
 });
 
 function loadRepoDetail(owner,name) {
