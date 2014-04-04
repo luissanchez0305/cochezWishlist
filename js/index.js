@@ -100,7 +100,6 @@ var db;
 $('#reposHome').bind('pageinit', function(event) {
     loadRepos();
     //db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*5);
-    Device.prototype.getInfo(function(){}, function(){})
     //db.transaction(createDb, txError, txSuccess);
 });
 
