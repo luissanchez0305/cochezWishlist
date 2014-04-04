@@ -58,20 +58,22 @@ var app = {
     	var pwd = $('#pwd').val(); 	
 
     	//Revisar credenciales desde webservice
-    	$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: usr, p: pwd}, function(data){
+    	$.ajax({
+    	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
+    	  data: {u: usr, p: pwd},
+    	  success: function(data){
         	alert(data.posts.length);
     		if(data.posts.length > 0)
     	        window.localStorage.setItem("cochezwl_user", usr);
     		else
     			alert('usuario no existe');
-    	}).fail(function() {
-    	    alert( "error" );
+    	  	},
+    	  dataType: 'json'
     	});
     }
 };
 
 function selectSuccess() {
-	alert('results: ' + results.rows.length);
 	var usr = $('#user').val();
 	var pwd = $('#pwd').val();
 	
