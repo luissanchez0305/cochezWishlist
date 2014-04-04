@@ -62,7 +62,6 @@ var app = {
     	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
     	  data: {u: usr, p: pwd},
     	  success: function(data){
-        	alert(data.posts.length);
     		if(data.posts.length > 0)
     	        window.localStorage.setItem("cochezwl_user", usr);
     		else
@@ -87,6 +86,7 @@ function selectSuccess() {
 }
 function changePage(showPage){
 	$('div[data-role="page"]').each(function(){
+		alert($(this).attr('id') + '=' + showPage);
 		if($(this).attr('id') == showPage){
 			$(this).removeClass('hide');
 			$(this).addClass('ui-page ui-body-c ui-page-active');
