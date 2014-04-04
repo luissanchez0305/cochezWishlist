@@ -34,7 +34,22 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        console.log('ready')
+        console.log('ready');
+
+        var db;
+
+        $('#reposHome').bind('pageinit', function(event) {
+            loadRepos();
+            db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*5);
+            db.transaction(createDb, txError, txSuccess);
+        });
+        $('#reposDetail').live('pageshow', function(event) {
+            var owner = getUrlVars().owner;
+            var name = getUrlVars().name;
+            loadRepoDetail(owner,name);
+            $("#saveBtn").bind("click", saveFave);
+            checkFave();
+        });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -48,13 +63,6 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
-$('#reposDetail').live('pageshow', function(event) {
-    var owner = getUrlVars().owner;
-    var name = getUrlVars().name;
-    loadRepoDetail(owner,name);
-    $("#saveBtn").bind("click", saveFave);
-    checkFave();
-});
 
 function loadRepoDetail(owner,name) {
     $.ajax("https://api.github.com/repos/" + owner + "/" + name).done(function(data) {
@@ -95,22 +103,14 @@ function getUrlVars() {
     return vars;
 }
 
-var db;
-
-$('#reposHome').bind('pageinit', function(event) {
-    loadRepos();
-    //db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*5);
-    //db.transaction(createDb, txError, txSuccess);
-});
-
 function createDb(tx) {
     tx.executeSql("DROP TABLE IF EXISTS repos");
     tx.executeSql("CREATE TABLE repos(user,name)");
 }
 
 function txError(error) {
-    /*console.log(error);
-    console.log("Database error: " + error);*/
+    console.log(error);
+    console.log("Database error: " + error);
 }
 
 function txSuccess() {
