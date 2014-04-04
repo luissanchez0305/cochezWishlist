@@ -36,13 +36,11 @@ var app = {
         app.receivedEvent('deviceready');
         console.log('ready');
 
+        loadRepos();
         var db;
 
-        $('#reposHome').bind('pageinit', function(event) {
-            loadRepos();
             /*db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*5);
             db.transaction(createDb, txError, txSuccess);*/
-        });
         $('#reposDetail').live('pageshow', function(event) {
             var owner = getUrlVars().owner;
             var name = getUrlVars().name;
