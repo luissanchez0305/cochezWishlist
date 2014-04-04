@@ -63,7 +63,9 @@ var app = {
     	        window.localStorage.setItem("cochezwl_user", usr);
     		else
     			alert('usuario no existe');
-    	})	
+    	}).fail(function() {
+    	    alert( "error" );
+    	});
     }
 };
 
