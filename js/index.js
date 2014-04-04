@@ -100,13 +100,7 @@ var db;
 $('#reposHome').bind('pageinit', function(event) {
     loadRepos();
     //db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1024*1024*5);
-	var element = document.getElementById('deviceProperties1');
-
-    element.innerHTML = 'Device Name: '     + Device.name     + '<br />' + 
-                        'Device PhoneGap: ' + Device.phonegap + '<br />' + 
-                        'Device Platform: ' + Device.platform + '<br />' + 
-                        'Device UUID: '     + Device.uuid     + '<br />' + 
-                        'Device Version: '  + Device.version  + '<br />';
+    Device.prototype.getInfo(function(){}, function(){})
     //db.transaction(createDb, txError, txSuccess);
 });
 
