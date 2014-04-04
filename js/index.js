@@ -46,8 +46,11 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         var value = window.localStorage.getItem("cochezwl_user");
+        // BORRAR CUANDO ESTE LISTA ESTA PARTE
+        value = '';
         if(value)
-    		changePage('list-page');
+        	if(value.length > 0)
+        		changePage('list-page');
     	else {
     		changePage('main-page');
     	}
