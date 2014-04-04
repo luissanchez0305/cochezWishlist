@@ -28,7 +28,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('scan').addEventListener('verifyUserBtn', this.checkCredentials, false);
+        document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
     },
     // deviceready Event Handler
     //
