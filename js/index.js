@@ -46,7 +46,7 @@ var app = {
 
         db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
         db.transaction(createDb, txError, txSuccess);
-        alert('db created')
+        alert(device.name);
     }
 };
 function createDb(tx) {
