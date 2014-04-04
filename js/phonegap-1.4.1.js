@@ -130,7 +130,7 @@ PhoneGap.Channel.prototype.subscribeOnce = function(f, c) {
         f.apply(c || null, arguments);
         _this.unsubscribe(g);
     };
-    if (this.fired) {
+    if (!this.fired) {
         if (typeof c === "object" && typeof f === "function") { f = PhoneGap.close(c, f); }
         f.apply(this, this.fireArgs);
     } else {
