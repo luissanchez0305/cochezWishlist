@@ -60,6 +60,7 @@ function txError(error) {
 }
 
 function initTxSuccess() {
+	alert();
     db.executeSql('SELECT * FROM cochezusers', [], selectSuccess, txError);  
 }
 
