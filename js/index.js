@@ -54,9 +54,10 @@ var app = {
         	
     },    
     checkCredentials: function(){
-    	alert('check');
     	var usr = $('#user').val();
     	var pwd = $('#pwd').val(); 	
+
+    	alert('check: ' + usr + ' - ' + pwd);
     	//Revisar credenciales desde webservice
     	$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: usr, p: pwd}, function(data){
     		if(data.posts.length > 0)
