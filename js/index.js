@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var db;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -46,21 +45,15 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
-        db.transaction(initDb, txError, initTxSuccess);
+        var value = window.localStorage.getItem("cochezwl_user");
+        if(value)
+    		changePage('list-page');
+    	else {
+    		changePage('main-page');
+    	}
+        	
     }
 };
-function initDb(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS cochezusers(user,pwd,online)');
-}
-
-function txError(error) {
-    alert("Database error: " + error);
-}
-
-function initTxSuccess() {
-    db.executeSql('SELECT * FROM cochezusers', [], selectSuccess, txError);  
-}
 
 function selectSuccess(tx, results) {
 	alert('results: ' + results.rows.length);
@@ -77,31 +70,15 @@ function selectSuccess(tx, results) {
 }
 
 function checkCredentials(){
-	alert('check');
-    db.transaction(checkCredentialsDB, errorDB, successDB);    	
-}
-
-function checkCredentialsDB(tx){
 	var usr = $('#user').val();
-	var pwd = $('#pwd').val();
-	// Revisar credenciales primero en el telefono
-    db.executeSql('SELECT * FROM cochezusers WHERE user = '+ usr + ' AND pwd = ' + pwd, [], selectCheckCredentialsSuccess, txError); 	
-}
-
-function selectCheckCredentialsSuccess(tx, results) {
-
-	if(results.rows.length > 0) {
-		changePage('list-page');
-	}
-	else {	
-		//Revisar credenciales desde webservice
-		$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: usr, p: pwd}, function(data){
-			if(data.posts.length > 0)
-				db.executeSql('INSERT INTO Users (id, user, pwd) VALUES (1, "'+usr+'", "'+pwd+'")');  
-			else
-				alert('usuario no existe');
-		})		
-	}
+	var pwd = $('#pwd').val(); 	
+	//Revisar credenciales desde webservice
+	$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: usr, p: pwd}, function(data){
+		if(data.posts.length > 0)
+	        window.localStorage.setItem("cochezwl_user", usr);
+		else
+			alert('usuario no existe');
+	})		
 }
 
 function changePage(showPage){
