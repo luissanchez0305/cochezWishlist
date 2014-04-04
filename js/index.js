@@ -61,10 +61,10 @@ function txError(error) {
 
 function initTxSuccess() {
     db.executeSql('SELECT * FROM cochezusers', [], selectSuccess, txError);  
-	alert();
 }
 
 function selectSuccess(tx, results) {
+	alert('results: ' + results.rows.length);
 	var usr = $('#user').val();
 	var pwd = $('#pwd').val();
 	
