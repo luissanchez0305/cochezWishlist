@@ -37,7 +37,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-    	alert();
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -45,6 +44,21 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
+        db.transaction(createDb, txError, txSuccess);
+        alert('db created')
     }
 };
+function createDb(tx) {
+    tx.executeSql("DROP TABLE IF EXISTS repos");
+    tx.executeSql("CREATE TABLE repos(user,name)");
+}
+
+function txError(error) {
+    console.log(error);
+    console.log("Database error: " + error);
+}
+
+function txSuccess() {
+    console.log("Success");
+}
