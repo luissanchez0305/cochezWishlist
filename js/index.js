@@ -44,21 +44,20 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        db = window.openDatabase("repodb","0.1","GitHub Repo Db", 1000);
+        db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
         db.transaction(createDb, txError, txSuccess);
-        alert(device.name);
     }
 };
 function createDb(tx) {
-    tx.executeSql("DROP TABLE IF EXISTS repos");
-    tx.executeSql("CREATE TABLE repos(user,name)");
+    tx.executeSql("DROP TABLE IF EXISTS cochezusers");
+    tx.executeSql("CREATE TABLE cochezusers(user,pwd)");
 }
 
 function txError(error) {
     console.log(error);
-    console.log("Database error: " + error);
+    alert("Database error: " + error);
 }
 
 function txSuccess() {
-    console.log("Success");
+    alert('success db created');
 }
