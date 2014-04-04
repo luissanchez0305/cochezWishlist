@@ -56,13 +56,13 @@
 	        	<h1>Lista de deseos</h1>
 		        <div data-role="navbar">
 		            <ul>
-		                <li><a href="#" data-icon="star" data-theme="b" onclick="changePage('new-page')">+ Nueva</a></li>
+		                <li><a href="#" data-icon="star" data-theme="b" id="scanCode">+ Scanear codigo de barra</a></li>
 		            </ul>
 	        	</div>        
 	        </div>
 	 
 	        <div data-role="content">  
-	            <p>***INGRESAR LISTA AQUI***</p>
+	            <p>***INGRESAR PRODUCTO***</p>
 	        </div>
 	 
 	        <div data-role="footer" class="hide">
@@ -94,6 +94,7 @@
 	 
 	    </div>  	
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();

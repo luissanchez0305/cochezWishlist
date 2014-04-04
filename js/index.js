@@ -28,6 +28,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
+        document.getElementById('scanCode').addEventListener('click', this.scan, false);
     },
     // deviceready Event Handler
     //
@@ -46,8 +47,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         var value = window.localStorage.getItem("cochezwl_user");
-        // BORRAR CUANDO ESTE LISTA ESTA PARTE
-        value = '';
         if(value)
         	if(value.length > 0)
         		changePage('list-page');
@@ -74,6 +73,17 @@ var app = {
     	  	},
     	  dataType: 'json'
     	});
+    },
+    scan: function(){
+        console.log('scanning');
+        
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+        scanner.scan( function (result) {  
+            alert(result.text);
+        }, function (error) { 
+            alert("Scanning failed: ", error); 
+        } );
     }
 };
 
@@ -90,9 +100,7 @@ function selectSuccess() {
 	}
 }
 function changePage(showPage){
-	alert($('div[data-role="page"]').length);
 	$('div[data-role="page"]').each(function(){
-		alert($(this).attr('id') + '=' + showPage);
 		if($(this).attr('id') == showPage){
 			$(this).removeClass('hide');
 			$(this).addClass('ui-page ui-body-c ui-page-active');
