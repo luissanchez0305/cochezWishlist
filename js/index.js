@@ -54,7 +54,7 @@ var app = {
         	
     },    
     checkCredentials: function(){
-    	var usr = $('#user').val();
+    	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
 
     	//Revisar credenciales desde webservice
@@ -86,7 +86,6 @@ function selectSuccess() {
 	}
 }
 function changePage(showPage){
-	alert(showPage);
 	$('div[data-role="page"]').each(function(){
 		if($(this).attr('id') == showPage){
 			$(this).removeClass('hide');
