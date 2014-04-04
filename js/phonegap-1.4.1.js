@@ -127,7 +127,6 @@ PhoneGap.Channel.prototype.subscribeOnce = function(f, c) {
     var g = null;
     var _this = this;
     var m = function() {
-    	alert();
         f.apply(c || null, arguments);
         _this.unsubscribe(g);
     };
