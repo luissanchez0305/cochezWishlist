@@ -55,7 +55,7 @@ var app = {
     }
 };
 
-function selectSuccess(tx, results) {
+function selectSuccess() {
 	alert('results: ' + results.rows.length);
 	var usr = $('#user').val();
 	var pwd = $('#pwd').val();
@@ -70,6 +70,7 @@ function selectSuccess(tx, results) {
 }
 
 function checkCredentials(){
+	alert('check');
 	var usr = $('#user').val();
 	var pwd = $('#pwd').val(); 	
 	//Revisar credenciales desde webservice
@@ -82,8 +83,8 @@ function checkCredentials(){
 }
 
 function changePage(showPage){
+	alert(showPage);
 	$('div[data-role="page"]').each(function(){
-		alert();
 		if($(this).attr('id') == showPage){
 			$(this).removeClass('hide');
 			$(this).addClass('ui-page ui-body-c ui-page-active');
