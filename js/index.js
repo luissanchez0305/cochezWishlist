@@ -59,7 +59,6 @@ function txError(error) {
 }
 
 function initTxSuccess() {
-    db = window.openDatabase("cochezwl", "1.0", "Test DB", 1000000);
     db.executeSql('SELECT * FROM cochezusers', [], selectSuccess, txError);  
 }
 
@@ -78,6 +77,7 @@ function selectSuccess(tx, results) {
 }
 
 function checkCredentials(){
+	alert('check');
     db.transaction(checkCredentialsDB, errorDB, successDB);    	
 }
 
