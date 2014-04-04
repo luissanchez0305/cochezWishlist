@@ -65,8 +65,10 @@ var app = {
     	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
     	  data: {u: usr, p: pwd},
     	  success: function(data){
-    		if(data.posts.length > 0)
+    		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
+    			changePage('list-page');
+    		}
     		else
     			alert('usuario no existe');
     	  	},
