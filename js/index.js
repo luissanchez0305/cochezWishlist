@@ -52,6 +52,18 @@ var app = {
     		changePage('main-page');
     	}
         	
+    },    
+    checkCredentials: function(){
+    	alert('check');
+    	var usr = $('#user').val();
+    	var pwd = $('#pwd').val(); 	
+    	//Revisar credenciales desde webservice
+    	$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: usr, p: pwd}, function(data){
+    		if(data.posts.length > 0)
+    	        window.localStorage.setItem("cochezwl_user", usr);
+    		else
+    			alert('usuario no existe');
+    	})	
     }
 };
 
@@ -68,20 +80,6 @@ function selectSuccess() {
 		changePage('main-page');
 	}
 }
-
-function checkCredentials(){
-	alert('check');
-	var usr = $('#user').val();
-	var pwd = $('#pwd').val(); 	
-	//Revisar credenciales desde webservice
-	$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: usr, p: pwd}, function(data){
-		if(data.posts.length > 0)
-	        window.localStorage.setItem("cochezwl_user", usr);
-		else
-			alert('usuario no existe');
-	})		
-}
-
 function changePage(showPage){
 	alert(showPage);
 	$('div[data-role="page"]').each(function(){
