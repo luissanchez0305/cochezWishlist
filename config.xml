@@ -6,14 +6,14 @@
         id        = "com.phonegap.hello-world"
         version   = "1.0.0">
 
-    <name>Cochez Wishlist</name>
+    <name>Hello World</name>
 
     <description>
-        Creacion y administracion de wishlist Cochez y cia
+        Hello World sample application that responds to the deviceready event.
     </description>
 
-    <author href="https://www.espherasoluciones.com" email="lsanchez@espherasoluciones.com">
-        Ing. Luis Ricardo Sanchez Tenas
+    <author href="http://phonegap.com" email="support@phonegap.com">
+        PhoneGap Team
     </author>
 
     <!--
@@ -24,6 +24,7 @@
     <preference name="permissions"                value="none"/>
 
     <!-- Customize your app and platform with the preference element. -->
+    <preference name="phonegap-version"           value="3.3.0" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
@@ -65,20 +66,20 @@
     -->
 
     <!-- Define app icon for each platform. -->
-    <icon src="images/icon.png" />
-    <icon src="images/icon.png" width="96" height="96" gap:platform="android"    gap:density="ldpi" />
-    <icon src="images/icon.png" width="96" height="96" gap:platform="android"    gap:density="mdpi" />
-    <icon src="images/icon.png" width="96" height="96" gap:platform="android"    gap:density="hdpi" />
-    <icon src="images/icon.png" width="96" height="96" gap:platform="android"    gap:density="xhdpi" />
-    <icon src="images/icon.png"     gap:platform="blackberry" />
-    <icon src="images/icon.png"     gap:platform="blackberry" gap:state="hover"/>
-    <icon src="images/icon.png"            gap:platform="ios"        width="57" height="57" />
-    <icon src="images/icon.png"            gap:platform="ios"        width="72" height="72" />
-    <icon src="images/icon.png"         gap:platform="ios"        width="114" height="114" />
-    <icon src="images/icon.png"         gap:platform="ios"        width="144" height="144" />
-    <icon src="images/icon.png"          gap:platform="webos" />
-    <icon src="images/icon.png"  gap:platform="winphone" />
-    <icon src="images/icon.png" gap:platform="winphone"   gap:role="background" />
+    <icon src="icon.png" />
+    <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
+    <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
+    <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" gap:state="hover"/>
+    <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
+    <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
+    <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
+    <icon src="res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+    <icon src="res/icon/webos/icon-64.png"          gap:platform="webos" />
+    <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
+    <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->
     <gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
