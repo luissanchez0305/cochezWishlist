@@ -88,6 +88,7 @@ function selectSuccess() {
 	}
 }
 function changePage(showPage){
+	alert($('div[data-role="page"]').length);
 	$('div[data-role="page"]').each(function(){
 		alert($(this).attr('id') + '=' + showPage);
 		if($(this).attr('id') == showPage){
