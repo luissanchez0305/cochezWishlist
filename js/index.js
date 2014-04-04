@@ -55,7 +55,6 @@ function initDb(tx) {
 }
 
 function txError(error) {
-    console.log(error);
     alert("Database error: " + error);
 }
 
