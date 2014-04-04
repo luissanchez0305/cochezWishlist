@@ -77,13 +77,13 @@ var app = {
     scan: function(){
         console.log('scanning');
         
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+        var scanner = cordova.plugins.barcodeScanner; //cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) {  
             alert(result.text);
         }, function (error) { 
             alert("Scanning failed: ", error); 
-        } );
+        });
     }
 };
 
