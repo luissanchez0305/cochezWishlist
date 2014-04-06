@@ -50,26 +50,24 @@
 			    </div>
 			    <input type="submit" data-inline="true" value="Submit" id="verifyUserBtn">
 			</div>
+			<div data-role="footer" class="hide">
+	        </div>		
 		</div> 
 	    <div data-role="page" id="list-page" class="hide">
 	        <div data-role="header">    
-	        	<h1>Lista de deseos</h1>
+	        	<h1>Lista de deseos</h1>     
+	        </div>
+	 		<div data-role="main">  
 		        <div data-role="navbar">
 		            <ul>
 		                <li><a href="#" data-icon="star" data-theme="b" id="scanCode">+ Scanear codigo de barra</a></li>
 		            </ul>
-	        	</div>        
+	        	</div>   
 	        </div>
-	 
-	        <div data-role="content">  
-	            <p>***INGRESAR PRODUCTO***</p>
-	        </div>
-	 
-	        <div data-role="footer" class="hide">
+			<div data-role="footer" class="hide">
 	            <h1>Bottom Footer</h1>
 	        </div>
-	 
-	    </div>	
+	  	</div>	
 	    <div data-role="page" id="new-page" class="hide">
 	        <div data-role="header"> 
 	        	<div style="float:left;"><img src="images/cochezlogo.png" /></div>   
@@ -80,19 +78,16 @@
 		            </ul>
 	        	</div>        
 	        </div>
-	 
-	        <div data-role="content">
+	 		<div data-role="main">
 	            <p>***CONTROLES DE INSERCION DE PRODUCTO***</p>
 	            <p>+++NOMBRE+++</p>
 	            <p>+++CAMARA+++</p>
 	            <p>+++TOMA IMAGEN+++</p>
 	        </div>
-	 
-	        <div data-role="footer" class="hide">
+	 		<div data-role="footer" class="hide">
 	            <h1>Bottom Footer</h1>
 	        </div>
-	 
-	    </div>  	
+	 	</div>  	
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
