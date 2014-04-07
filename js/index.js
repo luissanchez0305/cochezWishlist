@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+  		alert('hola');
         document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
@@ -65,7 +66,6 @@ var app = {
     checkCredentials: function(){
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
-  		alert(usr);
 
     	//Revisar credenciales desde webservice
     	$.ajax({
