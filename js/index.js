@@ -19,6 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+  		alert('hola');
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -61,25 +62,6 @@ var app = {
     		changePage('main-page');
     	}
         	
-    },    
-    checkCredentials: function(){
-    	var usr = $('#usr').val();
-    	var pwd = $('#pwd').val(); 	
-
-    	//Revisar credenciales desde webservice
-    	$.ajax({
-    	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
-    	  data: {u: usr, p: pwd},
-    	  success: function(data){
-    		if(data.posts.length > 0){
-    	        window.localStorage.setItem("cochezwl_user", usr);
-    			changePage('list-page');
-    		}
-    		else
-    			alert('usuario no existe');
-    	  	},
-    	  dataType: 'json'
-    	});
     },
     scan: function(){
         console.log('scanning');
@@ -97,6 +79,27 @@ var app = {
 		changePage('main-page');
     }
 };
+  
+function checkCredentials(){
+	var usr = $('#usr').val();
+	var pwd = $('#pwd').val(); 	
+	alert(usr);
+
+	//Revisar credenciales desde webservice
+	$.ajax({
+	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
+	  data: {u: usr, p: pwd},
+	  success: function(data){
+		if(data.posts.length > 0){
+	        window.localStorage.setItem("cochezwl_user", usr);
+			changePage('list-page');
+		}
+		else
+			alert('usuario no existe');
+	  	},
+	  dataType: 'json'
+	});
+}
 
 function selectSuccess() {
 	var usr = $('#user').val();
