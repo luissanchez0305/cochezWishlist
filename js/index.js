@@ -48,12 +48,12 @@ var app = {
         			url: 'http://cochezwl.espherasoluciones.com/cred.php',
         			data { u: value },
         			success: function(data){
-        				if(data.posts.length > 0){
-        					// TODO LLENAR LISTA DE PRODUCTOS
-        				}
-        				else {
+        				if(data.posts.length == 0){
         					$('#listSection').html('Aun no has agregado ningun producto');
         				}
+        				/*else {
+        					// TODO LLENAR LISTA DE PRODUCTOS
+        				}*/
         			}
         		});
         	}
