@@ -49,9 +49,12 @@ var app = {
 
         var value = window.localStorage.getItem("cochezwl_user");
         if(value)
-        	if(value.length > 0)
+        	if(value.length > 0){
+        		alert('list-page');
         		changePage('list-page');
+        	}
     	else {
+    		alert('main-page');
     		changePage('main-page');
     	}
         	
