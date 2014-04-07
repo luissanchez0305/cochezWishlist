@@ -19,7 +19,6 @@
 var app = {
     // Application Constructor
     initialize: function() {
-  		alert('hola');
         this.bindEvents();
     },
     // Bind Event Listeners
