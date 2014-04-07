@@ -28,7 +28,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
     },
