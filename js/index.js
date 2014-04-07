@@ -44,7 +44,7 @@ var app = {
         if(value)
         	if(value.length > 0){
         		changePage('list-page');
-
+        		alert('page changed');
             	$.ajax({
             	  url: 'http://cochezwl.espherasoluciones.com/getList.php',
             	  data: {u: usr},
