@@ -65,13 +65,13 @@ var app = {
     checkCredentials: function(){
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
+  		alert(usr);
 
     	//Revisar credenciales desde webservice
     	$.ajax({
     	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
     	  data: {u: usr, p: pwd},
     	  success: function(data){
-      		alert('page changed');
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
