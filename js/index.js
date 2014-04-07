@@ -41,7 +41,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage.getItem("cochezwl_user");
-        if(value)
+        if(value){
         	if(value.length > 0){
         		changePage('list-page');
         		$.ajax({
@@ -57,6 +57,7 @@ var app = {
         			}
         		});
         	}
+        }
     	else {
     		changePage('main-page');
     	}
