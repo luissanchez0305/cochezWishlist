@@ -19,7 +19,6 @@
 var app = {
     // Application Constructor
     initialize: function() {
-  		alert('initialize');
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -28,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
     },
@@ -44,23 +44,30 @@ var app = {
         if(value)
         	if(value.length > 0){
         		changePage('list-page');
-            	$.ajax({
-            	  url: 'http://cochezwl.espherasoluciones.com/getList.php',
-            	  data: {u: usr},
-            	  success: function(data){
-            		if(data.posts.length > 0){
-            			//	TODO: LLENAR LA LISTA DE PRODUCTOS
-            		}
-            		else {
-            			$('#listSection').html('Aun no tiene productos')
-            	  	},
-            	  dataType: 'json'
-            	});
         	}
     	else {
     		changePage('main-page');
     	}
         	
+    },    
+    checkCredentials: function(){
+    	var usr = $('#usr').val();
+    	var pwd = $('#pwd').val(); 	
+
+    	//Revisar credenciales desde webservice
+    	$.ajax({
+    	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
+    	  data: {u: usr, p: pwd},
+    	  success: function(data){
+    		if(data.posts.length > 0){
+    	        window.localStorage.setItem("cochezwl_user", usr);
+    			changePage('list-page');
+    		}
+    		else
+    			alert('usuario no existe');
+    	  	},
+    	  dataType: 'json'
+    	});
     },
     scan: function(){
         console.log('scanning');
@@ -78,27 +85,6 @@ var app = {
 		changePage('main-page');
     }
 };
-  
-function checkCredentials(){
-	var usr = $('#usr').val();
-	var pwd = $('#pwd').val(); 	
-	alert(usr);
-
-	//Revisar credenciales desde webservice
-	$.ajax({
-	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
-	  data: {u: usr, p: pwd},
-	  success: function(data){
-		if(data.posts.length > 0){
-	        window.localStorage.setItem("cochezwl_user", usr);
-			changePage('list-page');
-		}
-		else
-			alert('usuario no existe');
-	  	},
-	  dataType: 'json'
-	});
-}
 
 function selectSuccess() {
 	var usr = $('#user').val();
