@@ -44,7 +44,7 @@ var app = {
         if(value)
         	if(value.length > 0){
         		changePage('list-page');
-        		/*$.ajax({
+        		$.ajax({
         			url: 'http://cochezwl.espherasoluciones.com/cred.php',
         			data { u: value },
         			success: function(data){
@@ -55,8 +55,7 @@ var app = {
         					$('#listSection').html('Aun no has agregado ningun producto');
         				}
         			}
-        		});*/
-        		alert(value);
+        		});
         	}
     	else {
     		changePage('main-page');
