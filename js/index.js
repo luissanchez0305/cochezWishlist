@@ -44,7 +44,7 @@ var app = {
         if(value){
         	if(value.length > 0){
         		changePage('list-page');
-    			fillList(usr);
+        		fillList(usr);
         	}
         }
     	else {
@@ -88,6 +88,7 @@ var app = {
 		changePage('main-page');
     }
 };
+
 function fillList(user){
 	$.ajax({
 		url: 'http://cochezwl.espherasoluciones.com/getList.php',
@@ -100,6 +101,7 @@ function fillList(user){
     	dataType: 'json'
 	});
 }
+
 function selectSuccess() {
 	var usr = $('#user').val();
 	var pwd = $('#pwd').val();
