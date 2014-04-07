@@ -44,7 +44,6 @@ var app = {
         if(value)
         	if(value.length > 0){
         		changePage('list-page');
-        		alert('page changed');
             	$.ajax({
             	  url: 'http://cochezwl.espherasoluciones.com/getList.php',
             	  data: {u: usr},
@@ -72,6 +71,7 @@ var app = {
     	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
     	  data: {u: usr, p: pwd},
     	  success: function(data){
+      		alert('page changed');
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
