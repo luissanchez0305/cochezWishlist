@@ -41,10 +41,22 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage.getItem("cochezwl_user");
-        alert(value);
         if(value)
         	if(value.length > 0){
         		changePage('list-page');
+
+            	$.ajax({
+            	  url: 'http://cochezwl.espherasoluciones.com/getList.php',
+            	  data: {u: usr},
+            	  success: function(data){
+            		if(data.posts.length > 0){
+            			//	TODO: LLENAR LA LISTA DE PRODUCTOS
+            		}
+            		else {
+            			$('#listSection').html('Aun no tiene productos')
+            	  	},
+            	  dataType: 'json'
+            	});
         	}
     	else {
     		changePage('main-page');
