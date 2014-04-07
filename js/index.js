@@ -63,6 +63,16 @@ var app = {
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
+        		/*$.ajax({
+        			url: 'http://cochezwl.espherasoluciones.com/getList.php',
+        			data { u: usr },
+        			success: function(data){
+        				if(data.posts.length == 0){
+        					$('#listSection').html('Aun no has agregado ningun producto');
+        				}
+        			},
+        	    	dataType: 'json'
+        		});*/
     		}
     		else
     			alert('usuario no existe');
