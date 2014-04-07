@@ -82,7 +82,7 @@ var app = {
         });
     },
     logout: function(){
-        window.localStorage.setItem("cochezwl_user", usr);
+        window.localStorage.removeItem("cochezwl_user");
 		changePage('main-page');
     }
 };
