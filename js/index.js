@@ -64,16 +64,14 @@ var app = {
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
         		$.ajax({
-        			url: 'http://cochezwl.espherasoluciones.com/cred.php',
-        			data { u: value },
+        			url: 'http://cochezwl.espherasoluciones.com/getList.php',
+        			data { u: usr },
         			success: function(data){
         				if(data.posts.length == 0){
         					$('#listSection').html('Aun no has agregado ningun producto');
         				}
-        				/*else {
-        					// TODO LLENAR LISTA DE PRODUCTOS
-        				}*/
-        			}
+        			},
+        	    	dataType: 'json'
         		});
     		}
     		else
