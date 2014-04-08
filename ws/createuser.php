@@ -9,6 +9,8 @@ if(isset($_GET['u']) && isset($_GET['p']) && isset($_GET['e'])) {
 	header('Content-type: application/json');
 	header("access-control-allow-origin: *");
 
+	// TODO VERIFICAR QUE EL USUARIO YA EXISTE Y ENVIAR ERROR
+	
 	$uname = $_GET['u'];
 	$pwd = $_GET['p'];
 	$name = $_GET['n'] ? $_GET['n'] : '';

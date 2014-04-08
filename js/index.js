@@ -69,9 +69,10 @@ var app = {
 	    		ur: 'http://cochezwl.espherasoluciones.com/createuser.php',
 	    		data: {u: usr, p: pwd, e: email, n: fname, l: lname },
 	    		success: function(data){
+	    			// TODO VALIDAR QUE EL USUARIO EXISTE O NO
 	    	        window.localStorage.setItem("cochezwl_user", usr);
 	    	        $('#missingDataList').html('');
-	    			changePage('list-page');   			
+	    			changePage('list-page');   	
 	    		}
 	    	});
     	}
