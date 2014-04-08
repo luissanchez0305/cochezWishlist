@@ -44,7 +44,7 @@ var app = {
         if(value){
         	if(value.length > 0){
         		changePage('list-page');
-        		fillList(usr);
+        		fillList(value);
         	}
         }
     	else {
