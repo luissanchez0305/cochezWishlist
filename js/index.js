@@ -118,6 +118,8 @@ var app = {
 
         scanner.scan( function (result) {  
             alert(result.text);
+        	// TODO: BUSCAR Y DESPLEGAR PRODUCTO 
+        	// TODO: INSERTAR PRODUCTO A LA BD
         }, function (error) { 
             alert("Scanning failed: ", error); 
         });
