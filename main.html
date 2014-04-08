@@ -28,6 +28,7 @@
         <title>Cochez Wishlist</title>
     </head>
     <body>    	
+    	<!-- LOGIN PAGE -->
         <div data-role="page" id="main-page">
 	        <div data-role="header">    
 	        	<h1>Lista de deseos</h1>
@@ -39,17 +40,62 @@
 			      <label for="pwd">Password:</label>
 			      <input type="password" name="pwd" id="pwd">
 			    </div>
-			    <a type="submit" data-inline="true" id="verifyUserBtn" class="ui-btn">Submit</a>
+    			<div data-role="controlgroup" data-type="vertical">
+				    <a id="verifyUserBtn" class="ui-btn">Iniciar</a>
+				    <a href="#signup" id="verifyUserBtn" class="ui-btn">Registrase</a>
+			    </div>
 			</div>
 		</div> 
-	    <div data-role="page" id="list-page" class="ui-content">
+		
+		<!-- SIGNUP -->
+		<div data-role="page" id="signup">			
+	        <div data-role="header">    
+	        	<h1>Lista de deseos - Registrarse</h1>
+			</div>			
+	        <div data-role="main" class="ui-content">
+	        	<form id="signupFrm">
+			    <div class="ui-field-contain">
+			      <h3>Información general</h3>    
+			      <label for="usr">Nombre:</label>
+			      <input type="text" name="name" id="name">     
+			      <label for="usr">Apellido:</label>
+			      <input type="text" name="lname" id="lname">     
+			      <label for="usr">Email*:</label>
+			      <input type="text" name="email" id="email"> 
+			      <h3>Credenciales de acceso</h3>    
+			      <label for="usr">Username*:</label>
+			      <input type="text" name="uname" id="uname">       
+			      <label for="pwd">Contraseña*:</label>
+			      <input type="password" name="pwd1" id="pwd1">
+			      <label for="pwd">Confirmación de contraseña*:</label>
+			      <input type="password" name="pwd2" id="pwd2">
+			    </div>	        	
+			    </form>
+				<a href="#missingData" id="signupBtn" class="ui-btn">Enviar</a>
+			</div>
+		</div>
+		
+		<!-- MISSING SIGNUP DATA -->
+		<div data-role="page" data-dialog="true" id="missingData">		
+			<div data-role="header">
+			  	<h1>Faltan los siguientes campos obligatorios</h1>
+			</div>			
+			<div data-role="main" class="ui-content">
+				<p id="missingDataList"></p>
+			</div>
+		</div>
+		
+		<!-- LIST OF PRODUCTS PAGE -->
+	    <div data-role="page" id="list-page">
 	        <div data-role="header">    
 	        	<h1>Lista de deseos</h1>     
 	        </div> 
-    		<div data-role="controlgroup" data-type="horizontal">
-	 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
-      			<a href="#" id="logout" class="ui-btn">Logout</a> 
-	 			<p id="listSection"></p>
+	        <div data-role="main" class="ui-content">
+	    		<div data-role="controlgroup" data-type="horizontal">
+		 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
+	      			<a href="#" id="logout" class="ui-btn">Logout</a> 
+		 			<p id="listSection"></p>
+		        </div>
 	        </div>
 	  	</div>		
         <script type="text/javascript" src="cordova.js"></script>

@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET['u']) && isset($_GET['p']) && isset($_GET['n']) && isset($_GET['e'])) {
+if(isset($_GET['u']) && isset($_GET['p']) && isset($_GET['e'])) {
 	$username = 'espheras_dbuser';
 	$password = 'Goingupinlife123';
 	$database = 'cochezwl';
@@ -11,7 +11,7 @@ if(isset($_GET['u']) && isset($_GET['p']) && isset($_GET['n']) && isset($_GET['e
 
 	$uname = $_GET['u'];
 	$pwd = $_GET['p'];
-	$name = $_GET['n'];
+	$name = $_GET['n'] ? $_GET['n'] : '';
 	$lname = $_GET['l'] ? $_GET['l'] : '';
 	$email = $_GET['e'];
 	$query = "INSERT INTO users (username, password, name, lastname, email) VALUES ('$uname', '$pwd', '$name', '$lname', '$email')";
