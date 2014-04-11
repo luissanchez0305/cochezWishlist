@@ -104,7 +104,9 @@ var app = {
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
+    			alert('antes fill');
     			fillList(usr);
+    			alert('despues fill');
     		}
     		else
     			alert('usuario no existe');
