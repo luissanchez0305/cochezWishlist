@@ -42,7 +42,7 @@
 			    </div>
     			<div data-role="controlgroup" data-type="vertical">
 				    <a id="verifyUserBtn" class="ui-btn">Iniciar</a>
-				    <a href="#signup" id="verifyUserBtn" class="ui-btn">Registrase</a>
+				    <!--<a href="#signup" id="verifyUserBtn" class="ui-btn">Registrase</a>-->
 			    </div>
 			</div>
 		</div> 
@@ -76,14 +76,14 @@
 		</div>
 		
 		<!-- MISSING SIGNUP DATA -->
-		<div data-role="page" data-dialog="true" id="missingData">		
+		<!-- <div data-role="page" data-dialog="true" id="missingData">		
 			<div data-role="header">
 			  	<h1>Faltan los siguientes campos obligatorios</h1>
 			</div>			
 			<div data-role="main" class="ui-content">
 				<p id="missingDataList"></p>
 			</div>
-		</div>
+		</div> -->
 		
 		<!-- LIST OF PRODUCTS PAGE -->
 	    <div data-role="page" id="list-page">
@@ -94,7 +94,9 @@
 	    		<div data-role="controlgroup" data-type="horizontal">
 		 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
 	      			<a href="#" id="logout" class="ui-btn">Logout</a> 
-		 			<p id="listSection"></p>
+		 			<ul data-role="listview" id="listSection">
+		 			
+		 			</ul>
 		        </div>
 	        </div>
 	  	</div>		
