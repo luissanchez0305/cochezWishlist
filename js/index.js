@@ -137,14 +137,14 @@ function fillList(user){
 		data: { u: user },
 		success: function(data){
 			if(data.posts.length == 0){
-				$('#listSection').html('<li>Aun no has agregado ningun producto</li>');
+				//$('#listSection').html('<li>Aun no has agregado ningun producto</li>');
 			}
 			else{
 				var list = '';
 				for(var i = 0; i < data.posts.length; i++){
 					list += '<li data-icon="false">Barcode: '+data.posts[i].post.barcode+'<br>'+data.posts[i].post.name+'</li>';
 				}
-				$('#listSection').html(list);
+				//$('#listSection').html(list);
 			}
 		},
     	dataType: 'json'
