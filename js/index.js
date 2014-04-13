@@ -95,7 +95,6 @@ var app = {
     checkCredentials: function(){
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
-		alert('antes fill');
 
     	//Revisar credenciales desde webservice
     	$.ajax({
@@ -106,7 +105,6 @@ var app = {
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
     			fillList(usr);
-    			alert('despues fill');
     		}
     		else
     			alert('usuario no existe');
@@ -142,11 +140,12 @@ function fillList(user){
 				$('#listSection').html('<li>Aun no has agregado ningun producto</li>');
 			}
 			else{
-				var list = '';
+				/*var list = '';
 				for(var i = 0; i < data.posts.length; i++){
 					list += '<li data-icon="false">Barcode: '+data.posts[i].post.barcode+'<br>'+data.posts[i].post.name+'</li>';
 				}
-				$('#listSection').html(list));
+				$('#listSection').html(list));*/
+				alert('fill list');
 			}
 		},
     	dataType: 'json'
