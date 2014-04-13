@@ -102,7 +102,6 @@ var app = {
     	  data: {u: usr, p: pwd},
     	  success: function(data){
     		if(data.posts.length > 0){
-				alert('set item');
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
     			fillList(usr);
