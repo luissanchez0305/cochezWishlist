@@ -142,7 +142,7 @@ function fillList(user){
 			else{
 				var list = '';
 				for(var i = 0; i < data.posts.length; i++){
-					list += '<li data-icon="false">Barcode: '+data.posts[i].barcode+'<br>'+data.posts[i].name+'</li>';
+					list += '<li data-icon="false">Barcode: '+data.posts[i].post.barcode+'<br>'+data.posts[i].post.name+'</li>';
 				}
 				$('#listSection').html(list);
 			}
