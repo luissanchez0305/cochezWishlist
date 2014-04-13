@@ -95,6 +95,7 @@ var app = {
     checkCredentials: function(){
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
+		alert('antes fill');
 
     	//Revisar credenciales desde webservice
     	$.ajax({
@@ -104,7 +105,6 @@ var app = {
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
-    			alert('antes fill');
     			fillList(usr);
     			alert('despues fill');
     		}
