@@ -6,10 +6,24 @@
 </head>
 <body>
 <script>
-
-	$.get('http://cochezwl.espherasoluciones.com/cred.php', {u: 'luis', p: 'climbing'}, function(data){
-		var pruebavar = 1;
-	});
+$.ajax({
+	url: 'http://cochezwl.espherasoluciones.com/getList.php',
+	data: { u: 'luis' },
+	success: function(data){
+		if(data.posts.length == 0){
+			alert('Aun no has agregado ningun producto');
+		}
+		else{
+			var list = '';
+			for(var i = 0; i < data.posts.length; i++){
+				list += '<li data-icon="false">Barcode: '+data.posts[i].post.barcode+'<br>'+data.posts[i].post.name+'</li>';
+			}
+			$('#listSection').html(list);
+		}
+	},
+	dataType: 'json'
+});
 </script>
+<ul id="listSection"></ul>
 </body>
 </html>

@@ -144,7 +144,7 @@ function fillList(user){
 				for(var i = 0; i < data.posts.length; i++){
 					list += '<li data-icon="false">Barcode: '+data.posts[i].barcode+'<br>'+data.posts[i].name+'</li>';
 				}
-				$('#listSection').html(list));
+				$('#listSection').html(list);
 			}
 		},
     	dataType: 'json'
