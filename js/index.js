@@ -140,12 +140,11 @@ function fillList(user){
 				$('#listSection').html('<li>Aun no has agregado ningun producto</li>');
 			}
 			else{
-				/*var list = '';
+				var list = '';
 				for(var i = 0; i < data.posts.length; i++){
-					list += '<li data-icon="false">Barcode: '+data.posts[i].post.barcode+'<br>'+data.posts[i].post.name+'</li>';
+					list += '<li data-icon="false">Barcode: '+data.posts[i].barcode+'<br>'+data.posts[i].name+'</li>';
 				}
-				$('#listSection').html(list));*/
-				alert('fill list');
+				$('#listSection').html(list));
 			}
 		},
     	dataType: 'json'
