@@ -104,7 +104,7 @@ var app = {
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
     			//changePage('list-page');
-    	        $('#pasaPagina').trigger('click');
+    	        $('#changeListing').trigger('click');
     			fillList(usr);
     			$('#usr').val('');
     	    	$('#pwd').val(''); 
@@ -122,15 +122,39 @@ var app = {
 
         scanner.scan( function (result) {  
             alert(result.text);
-        	// TODO: BUSCAR Y DESPLEGAR PRODUCTO 
-        	// TODO: INSERTAR PRODUCTO A LA BD
+            $.ajax({
+            	url: 'http://cochezwl.espherasoluciones.com/getitem.php',
+            	data { b: result.text },
+            	success: function(data){
+            		if(data.posts.length > 0){
+            			$.ajax({
+            				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
+            				data: { b: result.text, u: window.localStorage.setItem("cochezwl_user") },
+            				success: function(data){
+            					if(data != '0'){
+            						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
+            					}
+            					else {
+            						alert('error guardando');
+            					}
+            				},
+            				dataType: 'json'
+            			
+            			});
+            		}
+            		else {
+            			alert('producto no existe');
+            		}
+            	},
+            	dataType: 'json'
+            })
         }, function (error) { 
             alert("Scanning failed: ", error); 
         });
     },
     logout: function(){
         window.localStorage.removeItem("cochezwl_user");
-		changePage('main-page');
+        $('#changeLogin').trigger('click');
     }
 };
 
@@ -145,7 +169,7 @@ function fillList(user){
 			else{
 				var list = '';
 				for(var i = 0; i < data.posts.length; i++){
-					list += '<li data-icon="false">Barcode: '+data.posts[i].post.barcode+'<br>'+data.posts[i].post.name+'</li>';
+					list += '<li data-icon="false">'+data.posts[i].post.barcode+' - '+data.posts[i].post.name+'</li>';
 				}
 				$('#listSection').html(list);
 			}
@@ -154,18 +178,6 @@ function fillList(user){
 	});
 }
 
-function selectSuccess() {
-	var usr = $('#user').val();
-	var pwd = $('#pwd').val();
-	
-	if(results.rows.length > 0) {
-		changePage('list-page');
-		//TODO: Traer lista del usuario logueado
-	}
-	else {
-		changePage('main-page');
-	}
-}
 function changePage(showPage){
 	$('div[data-role="page"]').each(function(){
 		if($(this).attr('id') == showPage){

@@ -23,6 +23,11 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+		<style>
+		.hide{
+			display:none;
+		}
+		</style>
     	<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/jquery.mobile-1.4.2.min.js"></script>
         <title>Cochez Wishlist</title>
@@ -42,7 +47,7 @@
 			    </div>
     			<div data-role="controlgroup" data-type="vertical">
 				    <a id="verifyUserBtn" class="ui-btn">Iniciar</a>
-				    <a href="#list-page" id="pasaPagina" class="ui-btn hide">Pasa pagina</a>
+				    <a href="#list-page" id="changeListing" class="ui-btn hide"></a>
 			    </div>
 			</div>
 		</div> 
@@ -56,6 +61,7 @@
 	    		<div data-role="controlgroup" data-type="horizontal">
 		 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
 	      			<a href="#" id="logout" class="ui-btn">Logout</a>
+				    <a href="#list-page" id="changeLogin" class="ui-btn hide"></a>
 		        </div>	 
 		 		<ul data-role="listview" data-inset="true" id="listSection">
 		 		</ul>
