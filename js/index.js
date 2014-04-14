@@ -28,7 +28,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
-        document.getElementById('signupBtn').addEventListener('click', this.createUser, false);
+        /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
     },
