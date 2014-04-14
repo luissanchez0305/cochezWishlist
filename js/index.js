@@ -53,7 +53,7 @@ var app = {
     	}
         	
     },    
-    createUser: function(){
+    /*createUser: function(){
     	if($('#email').val().length > 0 && 
     			$('#pwd1').val().length > 0 && 
     			$('#pwd2').val().length > 0 && 
@@ -91,7 +91,7 @@ var app = {
 			missingData += '</ul>';
     		$('#missingDataList').html(missingData);
     	}
-    },
+    },*/
     checkCredentials: function(){
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
@@ -123,7 +123,7 @@ var app = {
         scanner.scan( function (result) {  
             alert(result.text);
             $.ajax({
-            	url: 'http://cochezwl.espherasoluciones.com/getitem.php',
+            	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
             	data { b: result.text },
             	success: function(data){
             		if(data.posts.length > 0){
