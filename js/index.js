@@ -103,7 +103,8 @@ var app = {
     	  success: function(data){
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
-    			changePage('list-page');
+    			//changePage('list-page');
+    	        $('#pasaPagina').trigger('click');
     			fillList(usr);
     			$('#usr').val('');
     	    	$('#pwd').val(''); 
