@@ -105,6 +105,8 @@ var app = {
     	        window.localStorage.setItem("cochezwl_user", usr);
     			changePage('list-page');
     			fillList(usr);
+    			$('#usr').val('');
+    	    	$('#pwd').val(''); 
     		}
     		else
     			alert('usuario no existe');
@@ -126,11 +128,8 @@ var app = {
         });
     },
     logout: function(){
-    	alert('antes logout');
         window.localStorage.removeItem("cochezwl_user");
-		alert('despues logout');
 		changePage('main-page');
-		alert('despues changepage');
     }
 };
 
