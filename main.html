@@ -47,6 +47,21 @@
 			</div>
 		</div> 
 		
+		<!-- LIST OF PRODUCTS PAGE -->
+	    <div data-role="page" id="list-page">
+	        <div data-role="header">    
+	        	<h1>Mi Lista de deseos</h1>     
+	        </div> 
+	        <div data-role="main" class="ui-content">
+	    		<div data-role="controlgroup" data-type="horizontal">
+		 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
+	      			<a href="#" id="logout" class="ui-btn">Logout</a>
+		        </div>	 
+		 		<ul data-role="listview" data-inset="true" id="listSection">
+		 		</ul>
+	        </div>
+	  	</div>		
+	  	
 		<!-- SIGNUP -->
 		<!-- <div data-role="page" id="signup">			
 	        <div data-role="header">    
@@ -85,20 +100,6 @@
 			</div>
 		</div> -->
 		
-		<!-- LIST OF PRODUCTS PAGE -->
-	    <div data-role="page" id="list-page">
-	        <div data-role="header">    
-	        	<h1>Lista de deseos</h1>     
-	        </div> 
-	        <div data-role="main" class="ui-content">
-	    		<div data-role="controlgroup" data-type="horizontal">
-		 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
-	      			<a href="#" id="logout" class="ui-btn">Logout</a>
-		        </div>	 
-		 		<ul data-role="listview" data-inset="true" id="listSection">
-		 		</ul>
-	        </div>
-	  	</div>		
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="js/index.js"></script>

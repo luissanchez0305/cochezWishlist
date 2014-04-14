@@ -126,8 +126,11 @@ var app = {
         });
     },
     logout: function(){
+    	alert('antes logout');
         window.localStorage.removeItem("cochezwl_user");
+		alert('despues logout');
 		changePage('main-page');
+		alert('despues changepage');
     }
 };
 
