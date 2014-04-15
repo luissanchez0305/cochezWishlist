@@ -19,7 +19,6 @@
 var app = {
     // Application Constructor
     initialize: function() {
-    	alert('init');
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -27,7 +26,6 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-    	alert('bind');
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
         /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
@@ -55,7 +53,44 @@ var app = {
     	}
         	
     },    
-    /*createUser: function(){
+    checkCredentials: function(){
+    	var usr = $('#usr').val();
+    	var pwd = $('#pwd').val(); 	
+
+    	//Revisar credenciales desde webservice
+    	$.ajax({
+    	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
+    	  data: {u: usr, p: pwd},
+    	  success: function(data){
+    		if(data.posts.length > 0){
+    	        window.localStorage.setItem("cochezwl_user", usr);
+    	        $('#changeListing').trigger('click');
+    			fillList(usr);
+    			$('#usr').val('');
+    	    	$('#pwd').val(''); 
+    		}
+    		else
+    			alert('usuario no existe');
+    	  	},
+    	  dataType: 'json'
+    	});
+    },
+    scan: function(){
+        console.log('scanning');
+        
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+        scanner.scan( function (result) {  
+            alert(result.text);
+        }, function (error) { 
+            alert("Scanning failed: ", error); 
+        });
+    },
+    logout: function(){
+        window.localStorage.removeItem("cochezwl_user");
+        $('#changeLogin').trigger('click');
+    },
+    createUser: function(){
     	if($('#email').val().length > 0 && 
     			$('#pwd1').val().length > 0 && 
     			$('#pwd2').val().length > 0 && 
@@ -93,69 +128,6 @@ var app = {
 			missingData += '</ul>';
     		$('#missingDataList').html(missingData);
     	}
-    },*/
-    checkCredentials: function(){
-    	var usr = $('#usr').val();
-    	var pwd = $('#pwd').val(); 	
-
-    	//Revisar credenciales desde webservice
-    	$.ajax({
-    	  url: 'http://cochezwl.espherasoluciones.com/cred.php',
-    	  data: {u: usr, p: pwd},
-    	  success: function(data){
-    		if(data.posts.length > 0){
-    	        window.localStorage.setItem("cochezwl_user", usr);
-    	        $('#changeListing').trigger('click');
-    			fillList(usr);
-    			$('#usr').val('');
-    	    	$('#pwd').val(''); 
-    		}
-    		else
-    			alert('usuario no existe');
-    	  	},
-    	  dataType: 'json'
-    	});
-    },
-    scan: function(){
-        console.log('scanning');
-        
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-        scanner.scan( function (result) {  
-            alert(result.text);
-            $.ajax({
-            	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
-            	data { b: result.text },
-            	success: function(data){
-            		if(data.posts.length > 0){
-            			$.ajax({
-            				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
-            				data: { b: result.text, u: window.localStorage.setItem("cochezwl_user") },
-            				success: function(data){
-            					if(data != '0'){
-            						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
-            					}
-            					else {
-            						alert('error guardando');
-            					}
-            				},
-            				dataType: 'json'
-            			
-            			});
-            		}
-            		else {
-            			alert('producto no existe');
-            		}
-            	},
-            	dataType: 'json'
-            })
-        }, function (error) { 
-            alert("Scanning failed: ", error); 
-        });
-    },
-    logout: function(){
-        window.localStorage.removeItem("cochezwl_user");
-        $('#changeLogin').trigger('click');
     }
 };
 
@@ -176,18 +148,5 @@ function fillList(user){
 			}
 		},
     	dataType: 'json'
-	});
-}
-
-function changePage(showPage){
-	$('div[data-role="page"]').each(function(){
-		if($(this).attr('id') == showPage){
-			$(this).removeClass('hide');
-			$(this).addClass('ui-page ui-body-c ui-page-active');
-		}
-		else{
-			$(this).addClass('hide');
-			$(this).removeClass('ui-page ui-body-c ui-page-active');
-		}
 	});
 }
