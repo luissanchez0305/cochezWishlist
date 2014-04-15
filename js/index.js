@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+    	alert('check');
         document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
         /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
@@ -93,7 +94,6 @@ var app = {
     	}
     },*/
     checkCredentials: function(){
-    	alert('check');
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
 
