@@ -52,14 +52,17 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage["cochezwl_user"];
+        alert(value);
         if(value != 'undefined'){
         	if(value.length > 0){
         		$.mobile.changePage("#list-page");
         		fillList(value);
         	}
         }
-    	else 
-    		$.mobile.changePage("#main-page");      	
+    	else {
+    		$.mobile.changePage("#main-page");    
+    		$('#main-page').removeClass('hide');
+    	}
     },    
     checkCredentials: function(){
     	var usr = $('#usr').val();
@@ -71,7 +74,7 @@ var app = {
     	  data: {u: usr, p: pwd},
     	  success: function(data){
     		if(data.posts.length > 0){
-    	        window.localStorage.setItem("cochezwl_user", usr);
+    	        window.localStorage["cochezwl_user"] = usr;
         		$.mobile.changePage("#list-page");
     			fillList(usr);
     			$('#usr').val('');
@@ -88,7 +91,7 @@ var app = {
         
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) {   
+        scanner.scan( function (result) {  
           $.ajax({
         	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
         	data: { b: result.text },
@@ -110,7 +113,7 @@ var app = {
         			}).fail(function(){ alert('save error') });
         		}
         		else 
-        			alert('producto no existe');
+        			alert('producto no existe: ' + result.text);
         	},
         	dataType: 'json'
           }).fail(function(){ alert('scan error') });
@@ -139,7 +142,7 @@ var app = {
 	    		data: {u: usr, p: pwd, e: email, n: fname, l: lname },
 	    		success: function(data){
 	    			// TODO VALIDAR QUE EL USUARIO EXISTE O NO
-	    	        window.localStorage.setItem("cochezwl_user", usr);
+	    	        window.localStorage["cochezwl_user"] = usr;
 	    	        $('#missingDataList').html('');
 	        		$.mobile.changePage("#list-page"); 
 	    		}
