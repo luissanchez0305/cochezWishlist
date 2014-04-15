@@ -48,10 +48,8 @@ var app = {
         		fillList(value);
         	}
         }
-    	else {
-            $('#changeLogin').trigger('click');
-    	}
-        	
+    	else 
+            $('#changeLogin').trigger('click');        	
     },    
     checkCredentials: function(){
     	var usr = $('#usr').val();
@@ -85,6 +83,7 @@ var app = {
         	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
         	data: { b: result.text },
         	success: function(data){
+        		alert(data.posts.length);
         		if(data.posts.length > 0){
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
@@ -97,23 +96,23 @@ var app = {
         						alert('error guardando');
         					}
         				},
-        				dataType: 'json'
-        			
+        				dataType: 'json'        			
         			});
         		}
-        		else {
+        		else 
         			alert('producto no existe');
-        		}
         	},
         	dataType: 'json'
-          })
+          }).fail(function(){ alert('scan error') });
         }, function (error) { 
             alert("Scanning failed: ", error); 
         });
     },
     logout: function(){
+		alert('logout in');
         window.localStorage.removeItem("cochezwl_user");
         $('#changeLogin').trigger('click');
+		alert('logout in');
     },
     createUser: function(){
     	if($('#email').val().length > 0 && 
