@@ -10,7 +10,7 @@ if(isset($_GET['u']) && isset($_GET['b'])) {
 	header('Content-type: application/json');
 	header("access-control-allow-origin: *");
 
-	$query = "SELECT id FROM barcodes WHERE barcode LIKE '$bcode'";
+	$query = "SELECT id FROM barcodes WHERE barcode = '$bcode'";
 	$result = mysql_query($query,$link) or die('Errant query:  '.$query);
 
 	/* create one master array of the records */
