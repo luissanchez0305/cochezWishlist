@@ -80,12 +80,30 @@ var app = {
         
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) {              
+        scanner.scan( function (result) {   
           $.ajax({
         	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
-        	data { b: result.text },
+        	data: { b: result.text },
         	success: function(data){
-                alert(result.text);
+        		if(data.posts.length > 0){
+        			$.ajax({
+        				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
+        				data: { b: result.text, u: window.localStorage.setItem("cochezwl_user") },
+        				success: function(data){
+        					if(data != '0'){
+        						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
+        					}
+        					else {
+        						alert('error guardando');
+        					}
+        				},
+        				dataType: 'json'
+        			
+        			});
+        		}
+        		else {
+        			alert('producto no existe');
+        		}
         	},
         	dataType: 'json'
           })
