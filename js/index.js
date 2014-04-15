@@ -83,7 +83,6 @@ var app = {
         	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
         	data: { b: result.text },
         	success: function(data){
-        		alert(data.posts.length);
         		if(data.posts.length > 0){
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
@@ -97,7 +96,7 @@ var app = {
         					}
         				},
         				dataType: 'json'        			
-        			});
+        			}).fail(function(){ alert('save error') });
         		}
         		else 
         			alert('producto no existe');
@@ -109,10 +108,8 @@ var app = {
         });
     },
     logout: function(){
-		alert('logout in');
         window.localStorage.removeItem("cochezwl_user");
         $('#changeLogin').trigger('click');
-		alert('logout in');
     },
     createUser: function(){
     	if($('#email').val().length > 0 && 
