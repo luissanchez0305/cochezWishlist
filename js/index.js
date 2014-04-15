@@ -31,6 +31,7 @@ var app = {
         /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
+        document.addEventListener("backbutton", this.backButtonClicked, false);
     },
     // deviceready Event Handler
     //
@@ -39,17 +40,27 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+    backButtonClicked: function(e){
+        if($.mobile.activePage.is('#list-page')){
+            e.preventDefault();
+            if(window.localStorage.getItem("cochezwl_user")){
+            	navigator.app.exitApp();
+            }
+            else
+                navigator.app.backHistory()            	
+        }
+    },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage.getItem("cochezwl_user");
         if(value){
         	if(value.length > 0){
-    	        $('#changeListing').trigger('click');
+        		$.mobile.changePage("#list-page");
         		fillList(value);
         	}
         }
     	else 
-            $('#changeLogin').trigger('click');        	
+    		$.mobile.changePage("#main-page");      	
     },    
     checkCredentials: function(){
     	var usr = $('#usr').val();
@@ -62,7 +73,7 @@ var app = {
     	  success: function(data){
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
-    	        $('#changeListing').trigger('click');
+        		$.mobile.changePage("#list-page");
     			fillList(usr);
     			$('#usr').val('');
     	    	$('#pwd').val(''); 
@@ -109,7 +120,7 @@ var app = {
     },
     logout: function(){
         window.localStorage.removeItem("cochezwl_user");
-        $('#changeLogin').trigger('click');
+		$.mobile.changePage("#main-page"); 
     },
     createUser: function(){
     	if($('#email').val().length > 0 && 
@@ -130,7 +141,7 @@ var app = {
 	    			// TODO VALIDAR QUE EL USUARIO EXISTE O NO
 	    	        window.localStorage.setItem("cochezwl_user", usr);
 	    	        $('#missingDataList').html('');
-	    			changePage('list-page');   	
+	        		$.mobile.changePage("#list-page"); 
 	    		}
 	    	});
     	}
