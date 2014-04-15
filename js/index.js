@@ -52,8 +52,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage["cochezwl_user"];
-        alert(value);
-        if(typeof value !== 'undefined'){
+        if(value != undefined){
         	if(value.length > 0){
         		$.mobile.changePage("#list-page");
         		fillList(value);
