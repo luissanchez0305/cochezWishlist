@@ -97,7 +97,7 @@ var app = {
         		if(data.posts.length > 0){
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
-        				data: { b: result.text, u: window.localStorage.setItem("cochezwl_user") },
+        				data: { b: result.text, u: window.localStorage.getItem("cochezwl_user") },
         				success: function(data){
         					if(data != '0'){
         						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
