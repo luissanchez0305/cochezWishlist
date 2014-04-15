@@ -80,8 +80,15 @@ var app = {
         
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) {  
-            alert(result.text);
+        scanner.scan( function (result) {              
+          $.ajax({
+        	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
+        	data { b: result.text },
+        	success: function(data){
+                alert(result.text);
+        	},
+        	dataType: 'json'
+          })
         }, function (error) { 
             alert("Scanning failed: ", error); 
         });
