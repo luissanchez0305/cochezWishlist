@@ -10,21 +10,12 @@ if(isset($_GET['u']) && isset($_GET['b'])) {
 	header('Content-type: application/json');
 	header("access-control-allow-origin: *");
 
+	$bcode = $_GET['b'];
 	$query = "SELECT id FROM barcodes WHERE barcode = '$bcode'";
 	$result = mysql_query($query,$link) or die('Errant query:  '.$query);
-
-	/* create one master array of the records */
-	$posts = array();
-	if(mysql_num_rows($result)) {
-		while($post = mysql_fetch_assoc($result)) {
-			$posts[] = array('post'=>$post);
-		}
-	}
-	
-	if (count($posts) > 0) {
-		$uname = $_GEt['u'];
-		$bcode = $_GET['b'];
-		$query = "INSERT INTO lists (barcodeid, userid) VALUES ($posts[0].id, (SELECT id FROM users WHERE username = '$uname'))";
+	if ($bcid = mysql_fetch_assoc ($result)){
+		$uname = $_GET['u'];
+		$query = "INSERT INTO lists (barcodeid, userid) VALUES ($bcid, (SELECT id FROM users WHERE username = '$uname'))";
 		mysql_query($query,$link) or die('Errant query:  '.$query);
 		echo json_encode(array('posts'=>$posts));
 	}
