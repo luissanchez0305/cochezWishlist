@@ -93,6 +93,7 @@ var app = {
     	}
     },*/
     checkCredentials: function(){
+    	alert('check');
     	var usr = $('#usr').val();
     	var pwd = $('#pwd').val(); 	
 
@@ -103,7 +104,6 @@ var app = {
     	  success: function(data){
     		if(data.posts.length > 0){
     	        window.localStorage.setItem("cochezwl_user", usr);
-    			//changePage('list-page');
     	        $('#changeListing').trigger('click');
     			fillList(usr);
     			$('#usr').val('');
