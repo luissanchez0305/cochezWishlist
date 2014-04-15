@@ -43,9 +43,8 @@ var app = {
     backButtonClicked: function(e){
         if($.mobile.activePage.is('#list-page')){
             e.preventDefault();
-            if(window.localStorage["cochezwl_user"]){
+            if(window.localStorage["cochezwl_user"])
             	navigator.app.exitApp();
-            }
             else
                 navigator.app.backHistory()            	
         }
@@ -53,6 +52,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage["cochezwl_user"];
+        alert(value);
         if(value){
         	if(value.length > 0){
         		$.mobile.changePage("#list-page");
