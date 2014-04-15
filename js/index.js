@@ -95,16 +95,15 @@ var app = {
         	data: { b: result.text },
         	success: function(data){
         		if(data.posts.length > 0){
-        			alert(result.text + ' ' + window.localStorage.getItem("cochezwl_user"));
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
         				data: { b: result.text, u: window.localStorage.getItem("cochezwl_user") },
         				success: function(data){
-        					if(data != '0'){
+        					if(data.response == 'success'){
         						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
         					}
         					else {
-        						alert('error guardando');
+        						console.log('ya existe en esta lista');
         					}
         				},
         				dataType: 'json'        			
