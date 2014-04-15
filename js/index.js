@@ -19,6 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+    	alert('init');
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -26,8 +27,8 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+    	alert('bind');
         document.addEventListener('deviceready', this.onDeviceReady, false);
-    	alert('check');
         document.getElementById('verifyUserBtn').addEventListener('click', this.checkCredentials, false);
         /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
