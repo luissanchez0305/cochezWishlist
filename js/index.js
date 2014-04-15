@@ -43,7 +43,7 @@ var app = {
     backButtonClicked: function(e){
         if($.mobile.activePage.is('#list-page')){
             e.preventDefault();
-            if(window.localStorage.getItem("cochezwl_user")){
+            if(window.localStorage["cochezwl_user"]){
             	navigator.app.exitApp();
             }
             else
@@ -52,8 +52,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var value = window.localStorage.getItem("cochezwl_user");
-        alert(value);
+        var value = window.localStorage["cochezwl_user"];
         if(value){
         	if(value.length > 0){
         		$.mobile.changePage("#list-page");
@@ -96,10 +95,10 @@ var app = {
         	data: { b: result.text },
         	success: function(data){
         		if(data.posts.length > 0){
-        			alert(result.text + ' - ' + window.localStorage.getItem("cochezwl_user"));
+        			alert(result.text + ' - ' + window.localStorage["cochezwl_user"]);
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
-        				data: { b: result.text, u: window.localStorage.getItem("cochezwl_user") },
+        				data: { b: result.text, u: window.localStorage["cochezwl_user"] },
         				success: function(data){
         					if(data.response == 'success'){
         						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
