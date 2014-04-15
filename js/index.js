@@ -44,12 +44,12 @@ var app = {
         var value = window.localStorage.getItem("cochezwl_user");
         if(value){
         	if(value.length > 0){
-        		changePage('list-page');
+    	        $('#changeListing').trigger('click');
         		fillList(value);
         	}
         }
     	else {
-    		changePage('main-page');
+            $('#changeLogin').trigger('click');
     	}
         	
     },    
