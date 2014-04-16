@@ -57,11 +57,13 @@
 	        	<h1>Mi Lista de deseos</h1>     
 	        </div> 
 	        <div data-role="main" class="ui-content">
-	    		<div data-role="controlgroup" data-type="horizontal">
-		 			<a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a>
-	      			<a href="#" id="logout" class="ui-btn">Logout</a>
+	    		<div data-role="navbar">
+	    			<ul>
+	    				<li><a href="#" id="scanCode" class="ui-btn">+ Escanear producto</a></li>
+	    				<li><a href="#" id="logout" class="ui-btn">Logout</a></li>
+	    			</ul>
 		        </div>	 
-		 		<ul data-role="listview" data-inset="true" id="listSection">
+		 		<ul data-role="listview" id="listSection">
 		 		</ul>			    
 	        </div>
 	  	</div>	
@@ -70,7 +72,11 @@
 	  	<div data-role="page" id="product-page">
 	  		<div data-role="header">
 	  			<h1><label class="productName"></label></h1>
-				<a href="#list-page"><span class="ui-icon ui-icon-arrow-l ui-icon-shadow">&nbsp;</span></a>
+	  			<a href="#list-page" data-icon="grid" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-iconpos="top" data-theme="d" data-inline="true" class="ui-btn ui-btn-inline ui-btn-icon-top ui-btn-hover-d ui-btn-up-d">
+	  				<span class="ui-btn-inner">
+	  					<span class="ui-icon ui-icon-grid ui-icon-shadow">&nbsp;</span>
+	  				</span>
+	  			</a>
 	  		</div>
 	  		<div data-role="main" class="ui-content">
 	  			<h3><label class="productName"></label></h3>
