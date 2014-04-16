@@ -32,6 +32,17 @@ var app = {
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
         document.addEventListener("backbutton", this.backButtonClicked, false);
+        $('body').on('click', '.product', function(){
+            $.ajax({
+            	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
+            	data: { b: $(this).attr('product-data') },
+            	success: function(data){
+            		$('.productName').html(data.posts[0].post.name)
+            		$.mobile.changePage("#product-page");
+            	},
+            	dataType: 'json'
+            }).fail(function(){ alert('get product error') });
+        });
     },
     // deviceready Event Handler
     //
@@ -108,7 +119,7 @@ var app = {
         					if(dataCreate.response == 'success'){
         						var $list = $('#listSection');
         						$list.find('#noItems').remove();
-        						$list.append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>');
+        						$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+result.text+'">'+result.text+' - '+data.posts[0].post.name+'</a></li>');
         					}
         					else {
         						console.log('ya existe en esta lista');
@@ -182,9 +193,9 @@ function fillList(user){
 			else{
 				var list = '';
 				for(var i = 0; i < data.posts.length; i++){
-					list += '<li data-icon="false">'+data.posts[i].post.barcode+' - '+data.posts[i].post.name+'</li>';
+					list += '<li data-icon="false"><a href="#" class="product" product-data="'+data.posts[i].post.barcode+'">'+data.posts[i].post.barcode+' - '+data.posts[i].post.name+'</a></li>';
 				}
-				$('#listSection').html(list);
+				$('#listSection').html(list); 
 			}
 		},
     	dataType: 'json'
