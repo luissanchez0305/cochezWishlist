@@ -31,8 +31,8 @@ var app = {
         /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
+        //document.getElementById('createProductBtn').addEventListener('click', this.createProductButtonClicked, false);
         document.addEventListener("backbutton", this.backButtonClicked, false);
-        document.getElementById("createProductBtn").addEventListener("click", this.createProductButtonClicked, false);
         $('body').on('click', '.product', function(){
             $.ajax({
             	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
@@ -112,7 +112,7 @@ var app = {
         	data: { b: result.text },
         	success: function(data){
         		if(data.posts.length > 0){
-        			createProductOnUser(result.text, window.localStorage["cochezwl_user"]);
+        			createProductOnUser(result.text, window.localStorage["cochezwl_user"], data.posts[0].post.name);
         		}
         		else {
         			if(confirm('producto no existe: ' + result.text + '\nAgregar?')){
@@ -127,15 +127,15 @@ var app = {
             alert("Scanning failed: ", error); 
         });
     },
-    createProductButtonClicked: function(){
+    /*createProductButtonClicked: function(){
     	$.ajax({
 			url: 'http://cochezwl.espherasoluciones.com/createproduct.php',
 			data: { b: $('#barcode').val(), n: $('#bcname').val() },
 			success: function(data){
-				createProductOnUser($('#barcode').val(), window.localStorage["cochezwl_user"])
+				createProductOnUser($('#barcode').val(), window.localStorage["cochezwl_user"], $('#bcname').val());
 			}   		
     	}).fail(function(alert('save product error')));
-    },
+    },*/
     logout: function(){
         window.localStorage.removeItem("cochezwl_user");
 		$.mobile.changePage("#main-page"); 
@@ -181,16 +181,16 @@ var app = {
     }
 };
 
-function createProductOnUser(bc, user){
+function createProductOnUser(bc, user, name){
 	// insertar producto a la lista del usuario
 	$.ajax({
 		url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
 		data: { b: bc, u: user },
-		success: function(dataCreate){
-			if(dataCreate.response == 'success'){
+		success: function(data){
+			if(data.response == 'success'){
 				var $list = $('#listSection');
 				$list.find('#noItems').remove();
-				$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+bc+'">'+bc+' - '+user+'</a></li>').listview("refresh");
+				$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+bc+'">'+bc+' - '+name+'</a></li>').listview("refresh");
 			}
 			else {
 				console.log('ya existe en esta lista');
