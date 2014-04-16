@@ -44,10 +44,13 @@ var app = {
         if($.mobile.activePage.is('#list-page')){
             e.preventDefault();
             if(window.localStorage["cochezwl_user"])
-            	navigator.app.exitApp();
-            else
-                navigator.app.backHistory()            	
+            	navigator.app.exitApp();     	
         }
+        else if($.mobile.activePage.is('#main-page'))
+        	navigator.app.exitApp();        	
+        else
+            navigator.app.backHistory()       
+        		
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
