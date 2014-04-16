@@ -32,6 +32,7 @@ var app = {
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
         document.addEventListener("backbutton", this.backButtonClicked, false);
+        document.getElementById("createProductBtn").addEventListener("click", this.createProductButtonClicked, false);
         $('body').on('click', '.product', function(){
             $.ajax({
             	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
@@ -111,31 +112,29 @@ var app = {
         	data: { b: result.text },
         	success: function(data){
         		if(data.posts.length > 0){
-        			// insertar producto a la lista del usuario
-        			$.ajax({
-        				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
-        				data: { b: result.text, u: window.localStorage["cochezwl_user"] },
-        				success: function(dataCreate){
-        					if(dataCreate.response == 'success'){
-        						var $list = $('#listSection');
-        						$list.find('#noItems').remove();
-        						$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+result.text+'">'+result.text+' - '+data.posts[0].post.name+'</a></li>').listview("refresh");
-        					}
-        					else {
-        						console.log('ya existe en esta lista');
-        					}
-        				},
-        				dataType: 'json'        			
-        			}).fail(function(){ alert('save error') });
+        			createProductOnUser(result.text, window.localStorage["cochezwl_user"]);
         		}
-        		else 
-        			alert('producto no existe: ' + result.text);
+        		else {
+        			if(confirm('producto no existe: ' + result.text + '\nAgregar?')){
+                		$.mobile.changePage("#create-page");
+        				
+        			}
+        		}
         	},
         	dataType: 'json'
           }).fail(function(){ alert('scan error') });
         }, function (error) { 
             alert("Scanning failed: ", error); 
         });
+    },
+    createProductButtonClicked: function(){
+    	$.ajax({
+			url: 'http://cochezwl.espherasoluciones.com/createproduct.php',
+			data: { b: $('#barcode').val(), n: $('#bcname').val() },
+			success: function(data){
+				createProductOnUser($('#barcode').val(), window.localStorage["cochezwl_user"])
+			}   		
+    	}).fail(function(alert('save product error')));
     },
     logout: function(){
         window.localStorage.removeItem("cochezwl_user");
@@ -181,6 +180,25 @@ var app = {
     	}
     }
 };
+
+function createProductOnUser(bc, user){
+	// insertar producto a la lista del usuario
+	$.ajax({
+		url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
+		data: { b: bc, u: user },
+		success: function(dataCreate){
+			if(dataCreate.response == 'success'){
+				var $list = $('#listSection');
+				$list.find('#noItems').remove();
+				$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+bc+'">'+bc+' - '+user+'</a></li>').listview("refresh");
+			}
+			else {
+				console.log('ya existe en esta lista');
+			}
+		},
+		dataType: 'json'        			
+	}).fail(function(){ alert('save error') });
+}
 
 function fillList(user){
 	$.ajax({
