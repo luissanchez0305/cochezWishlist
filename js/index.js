@@ -117,7 +117,7 @@ var app = {
         		else {
         			if(confirm('producto no existe: ' + result.text + '\nAgregar?')){
                 		$.mobile.changePage("#create-page");
-        				
+        				$('#barcode').val(result.text);
         			}
         		}
         	},
