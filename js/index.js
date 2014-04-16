@@ -132,7 +132,8 @@ var app = {
 			url: 'http://cochezwl.espherasoluciones.com/createproduct.php',
 			data: { b: $('#barcode').val(), n: $('#bcname').val() },
 			success: function(data){
-				createProductOnUser($('#barcode').val(), window.localStorage["cochezwl_user"], $('#bcname').val());
+				//createProductOnUser($('#barcode').val(), window.localStorage["cochezwl_user"], $('#bcname').val());
+				alert('listo');
 			}   		
     	}).fail(function(){ alert('save product error') });
     },
