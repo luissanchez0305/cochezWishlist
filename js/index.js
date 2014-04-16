@@ -103,8 +103,9 @@ var app = {
         				data: { b: result.text, u: window.localStorage["cochezwl_user"] },
         				success: function(dataCreate){
         					if(dataCreate.response == 'success'){
-        						$('#listSection').find('#noItems').remove()
-        							.append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
+        						var $list = $('#listSection');
+        						$list.find('#noItems').remove();
+        						$list.append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>');
         					}
         					else {
         						console.log('ya existe en esta lista');
