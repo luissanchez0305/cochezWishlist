@@ -89,7 +89,7 @@ var app = {
     		if(data.posts.length > 0){
     	        window.localStorage["cochezwl_user"] = usr;
         		$.mobile.changePage("#list-page");
-    			fillList(usr);
+    			//fillList(usr);
     			$('#usr').val('');
     	    	$('#pwd').val(''); 
     		}
