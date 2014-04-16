@@ -103,7 +103,8 @@ var app = {
         				data: { b: result.text, u: window.localStorage["cochezwl_user"] },
         				success: function(dataCreate){
         					if(dataCreate.response == 'success'){
-        						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
+        						$('#listSection').find('#noItems').remove()
+        							.append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
         					}
         					else {
         						console.log('ya existe en esta lista');
@@ -172,7 +173,7 @@ function fillList(user){
 		data: { u: user },
 		success: function(data){
 			if(data.posts.length == 0){
-				$('#listSection').html('<li>Aun no has agregado ningun producto</li>');
+				$('#listSection').html('<li id="noItems">Aun no has agregado ningun producto</li>');
 			}
 			else{
 				var list = '';

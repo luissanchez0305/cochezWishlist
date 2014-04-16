@@ -12,7 +12,7 @@ if(isset($_GET['b'])) {
 
 	/* grab the posts from the db */
 	$barcode = $_GET['b'];
-	$query = "SELECT barcode FROM barcodes WHERE barcode = '$barcode'";
+	$query = "SELECT barcode, name FROM barcodes WHERE barcode = '$barcode'";
 	$result = mysql_query($query,$link) or die('Errant query:  '.$query);
 		
 	/* create one master array of the records */
