@@ -31,7 +31,7 @@ var app = {
         /*document.getElementById('signupBtn').addEventListener('click', this.createUser, false);*/
         document.getElementById('scanCode').addEventListener('click', this.scan, false);
         document.getElementById('logout').addEventListener('click', this.logout, false);
-        //document.getElementById('createProductBtn').addEventListener('click', this.createProductButtonClicked, false);
+        document.getElementById('createProductBtn').addEventListener('click', this.createProductButtonClicked, false);
         document.addEventListener("backbutton", this.backButtonClicked, false);
         $('body').on('click', '.product', function(){
             $.ajax({
@@ -127,15 +127,15 @@ var app = {
             alert("Scanning failed: ", error); 
         });
     },
-    /*createProductButtonClicked: function(){
+    createProductButtonClicked: function(){
     	$.ajax({
 			url: 'http://cochezwl.espherasoluciones.com/createproduct.php',
 			data: { b: $('#barcode').val(), n: $('#bcname').val() },
 			success: function(data){
 				createProductOnUser($('#barcode').val(), window.localStorage["cochezwl_user"], $('#bcname').val());
 			}   		
-    	}).fail(function(alert('save product error')));
-    },*/
+    	}).fail(function(){ alert('save product error') });
+    },
     logout: function(){
         window.localStorage.removeItem("cochezwl_user");
 		$.mobile.changePage("#main-page"); 
