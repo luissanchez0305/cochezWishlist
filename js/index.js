@@ -52,7 +52,6 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var value = window.localStorage["cochezwl_user"];
-        alert(value);
         if(value != 'undefined'){
         	if(value.length > 0){
         		$.mobile.changePage("#list-page");
@@ -102,9 +101,8 @@ var app = {
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
         				data: { b: result.text, u: window.localStorage["cochezwl_user"] },
-        				success: function(data){
-        					alert(data.response);
-        					if(data.response == 'success'){
+        				success: function(dataCreate){
+        					if(dataCreate.response == 'success'){
         						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
         					}
         					else {
