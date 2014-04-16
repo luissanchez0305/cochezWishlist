@@ -92,16 +92,18 @@ var app = {
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) {  
+        	// revisar si producto existe
           $.ajax({
         	url: 'http://cochezwl.espherasoluciones.com/getproduct.php',
         	data: { b: result.text },
         	success: function(data){
         		if(data.posts.length > 0){
-        			alert(result.text + ' - ' + window.localStorage["cochezwl_user"]);
+        			// insertar producto a la lista del usuario
         			$.ajax({
         				url: 'http://cochezwl.espherasoluciones.com/createproductonuser.php',
         				data: { b: result.text, u: window.localStorage["cochezwl_user"] },
         				success: function(data){
+        					alert(data.response);
         					if(data.response == 'success'){
         						$('#listSection').append('<li data-icon="false">'+result.text+' - '+data.posts[0].post.name+'</li>')
         					}
