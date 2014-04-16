@@ -89,7 +89,7 @@ var app = {
     		if(data.posts.length > 0){
     	        window.localStorage["cochezwl_user"] = usr;
         		$.mobile.changePage("#list-page");
-    			//fillList(usr);
+    			fillList(usr);
     			$('#usr').val('');
     	    	$('#pwd').val(''); 
     		}
@@ -119,7 +119,7 @@ var app = {
         					if(dataCreate.response == 'success'){
         						var $list = $('#listSection');
         						$list.find('#noItems').remove();
-        						$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+result.text+'">'+result.text+' - '+data.posts[0].post.name+'</a></li>');
+        						$list.append('<li data-icon="false"><a href="#" class="product" product-data="'+result.text+'">'+result.text+' - '+data.posts[0].post.name+'</a></li>').listview("refresh");
         					}
         					else {
         						console.log('ya existe en esta lista');
@@ -195,7 +195,7 @@ function fillList(user){
 				for(var i = 0; i < data.posts.length; i++){
 					list += '<li data-icon="false"><a href="#" class="product" product-data="'+data.posts[i].post.barcode+'">'+data.posts[i].post.barcode+' - '+data.posts[i].post.name+'</a></li>';
 				}
-				$('#listSection').html(list); 
+				$('#listSection').html(list).listview("refresh");
 			}
 		},
     	dataType: 'json'
